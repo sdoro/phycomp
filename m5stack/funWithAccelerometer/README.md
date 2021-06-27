@@ -11,6 +11,6 @@ La traduzione:
 
 Alla data di oggi (27.06.2021) la versione di MicroPython che ho usato è la d8d847d62-dirty del 2021-06-04 scaricabile dal sito di M5Stack come UIFlow_Matrix-v1.7.8.bin.
 
-Le modifiche apportate per farla funzionare sono state depositate tramite git e riguardano solo il file principale.py
+Le modifiche apportate per farla funzionare sono state depositate tramite git e riguardano solo il file principale.py e le ho dedotte leggendo [forum.micropython.org](https://forum.micropython.org/viewtopic.php?t=9940).
 
 

@@ -1,6 +1,6 @@
 from mpu6886 import MPU6886
 from neopixel import NeoPixel
-from machine import Pin, SoftI2C
+from machine import Pin, I2C
 from time import sleep
 from math import *
 
@@ -48,7 +48,7 @@ def updateDot(p, angle, size, threshold, color1, color2):
     return p
 
 # I2C bus init for MPU6886
-i2c = SoftI2C(scl=Pin(MPU6886_SCL), sda=Pin(MPU6886_SDA))
+i2c = I2C(1,scl=Pin(MPU6886_SCL), sda=Pin(MPU6886_SDA))
 
 # Values you can use to initialize the accelerometer. AFS_16G, means +-8G sensitivity, and so on
 # Larger scale means less precision
