@@ -3,7 +3,7 @@
 
 Alla data di oggi (28.06.2021) la versione di MicroPython che ho usato è la d8d847d62-dirty del 2021-06-04 scaricabile dal sito di M5Stack come UIFlow_Matrix-v1.7.8.bin.
 
-Le modifiche apportate per farla funzionare sono state depositate tramite git e riguardano la connessione con il wifi (non solo user e password ma anche le call). Mi sono aiutato dall'help() stesso che presenta la scheda al prompt:
+Le modifiche apportate per farla funzionare sono state depositate tramite git e riguardano la connessione con il wifi (non solo user e password ma anche le call in quanto ho preferito utilizzare una rete wifi esistente piuttosto che 'diventare' un access point). Mi sono aiutato dall'help() stesso che presenta la scheda al prompt:
 
 ```
 Basic WiFi configuration:
