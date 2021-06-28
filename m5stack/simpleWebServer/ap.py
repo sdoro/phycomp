@@ -9,22 +9,19 @@ import uos
 
 uname = uos.uname()
 
-ap = network.WLAN(network.AP_IF)
+ap = network.WLAN(network.STA_IF)
 ap.active(True)
 
-ssid = "ssid"
-password = "password"
-ap.config(essid=ssid, password=password)
-
-while ap.active() == False:
+ssid = "SSID"
+password = "secret"
+ap.scan()
+ap.connect(ssid, password)
+while not ap.isconnected() :
     pass
 
-print('Access Point Active')
-print(ap.ifconfig())
-print("Connect to " + ssid + ":" + "password = " + password);
-print("Visit: " + ap.ifconfig()[2] + ":80")
 
-print('===== ===== =====')
+print('Web Server Active')
+print("Visit: " + ap.ifconfig()[0] + ":80")
 
 res_01 = """<html>
     <head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
