@@ -36,3 +36,87 @@ Hash of data verified.
 Leaving...
 Hard resetting via RTS pin...
 
+
+Al tasto del reset con REPL attivo:
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:4
+load:0x3fff0034,len:7600
+ho 0 tail 12 room 4
+load:0x40078000,len:14396
+load:0x40080400,len:4724
+entry 0x400806a4
+I (31) boot: ESP-IDF v4.2-beta1-227-gf0e87c933a 2nd stage bootloader
+I (31) boot: compile time 15:46:30
+I (31) boot: chip revision: 3
+I (36) qio_mode: Enabling default flash chip QIO
+I (41) boot.esp32: SPI Speed      : 80MHz
+I (46) boot.esp32: SPI Mode       : QIO
+I (50) boot.esp32: SPI Flash Size : 16MB
+I (55) boot: Enabling RNG early entropy source...
+I (60) boot: Partition Table:
+I (64) boot: ## Label            Usage          Type ST Offset   Length
+I (71) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (79) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (86) boot:  2 factory          factory app      00 00 00010000 003f7a00
+I (93) boot:  3 ota_0            OTA app          00 10 00410000 00010000
+I (101) boot:  4 ota_1            OTA app          00 11 00420000 00640000
+I (108) boot:  5 spiffs           Unknown data     01 82 00a60000 004c4c00
+I (116) boot: End of partition table
+I (120) esp_image: segment 0: paddr=0x00010020 vaddr=0x3f400020 size=0x6710c (422156) map
+I (254) esp_image: segment 1: paddr=0x00077134 vaddr=0x3ffbdb60 size=0x03fbc ( 16316) load
+I (259) esp_image: segment 2: paddr=0x0007b0f8 vaddr=0x40080000 size=0x00404 (  1028) load
+I (261) esp_image: segment 3: paddr=0x0007b504 vaddr=0x40080404 size=0x04b14 ( 19220) load
+I (276) esp_image: segment 4: paddr=0x00080020 vaddr=0x400d0020 size=0xaefa4 (716708) map
+I (489) esp_image: segment 5: paddr=0x0012efcc vaddr=0x40084f18 size=0x0ede4 ( 60900) load
+I (521) boot: Loaded app from partition at offset 0x10000
+I (522) boot: Disabling RNG early entropy source...
+I (522) psram: This chip is ESP32-D0WD
+I (526) spiram: Found 64MBit SPI RAM device
+I (531) spiram: SPI RAM mode: flash 80m sram 80m
+I (536) spiram: PSRAM initialized, cache is in low/high (2-core) mode.
+I (544) cpu_start: Pro cpu up.
+I (547) cpu_start: Application information:
+I (552) cpu_start: Project name:     AWS_IoT_EduKit-Factory_Firmware
+I (559) cpu_start: App version:      508e991
+I (564) cpu_start: Compile time:     Feb 18 2021 15:46:26
+I (570) cpu_start: ELF file SHA256:  2ddbd7db69776222...
+I (576) cpu_start: ESP-IDF:          v4.2-beta1-227-gf0e87c933a
+I (583) cpu_start: Starting app cpu, entry point is 0x40081efc
+I (0) cpu_start: App cpu up.
+I (1086) spiram: SPI SRAM memory test OK
+I (1087) heap_init: Initializing. RAM available for dynamic allocation:
+I (1087) heap_init: At 3FFAE6E0 len 0000F480 (61 KiB): DRAM
+I (1093) heap_init: At 3FFCBA78 len 00014588 (81 KiB): DRAM
+I (1099) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (1106) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (1112) heap_init: At 40093CFC len 0000C304 (48 KiB): IRAM
+I (1118) cpu_start: Pro cpu start user code
+I (1123) spiram: Adding pool of 4082K of external SPI memory to heap allocator
+I (1144) spi_flash: detected chip: generic
+I (1144) spi_flash: flash io: qio
+I (1144) cpu_start: Starting scheduler on PRO CPU.
+I (0) cpu_start: Starting scheduler on APP CPU.
+I (1153) spiram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1163) Core2ForAWS: 
+***************************************************
+ M5Stack Core2 for AWS IoT EduKit Factory Firmware
+***************************************************
+I (3023) atecc608: Seeding the random number generator...
+I (3023) atecc608: ok
+I (3063) atecc608: Initializing ATECC608 secure element
+I (3063) atecc608: ok
+I (3063) atecc608: Checking data zone lock status...
+I (3103) atecc608: ok: locked
+I (3103) atecc608: Get the device info (type)...
+I (3143) atecc608: ok: 60 02
+I (4643) I2S: DMA Malloc info, datalen=blocksize=256, dma_buf_count=2
+I (4643) I2S: PLL_D2: Req RATE: 44100, real rate: 44642.000, BITS: 16, CLKM: 14, BCK: 8, MCLK: 11289966.924, SCLK: 1428544.000000, diva: 64, divb: 11
+I (4653) I2S: PLL_D2: Req RATE: 44100, real rate: 44642.000, BITS: 16, CLKM: 14, BCK: 8, MCLK: 11289966.924, SCLK: 1428544.000000, diva: 64, divb: 11
+I (4653) HOME: 
+
+Welcome to your M5Stack Core2 for AWS IoT EduKit reference hardware! Visit https://edukit.workshop.aws to view the tutorials and start learning how to build IoT solutions using AWS services.
+

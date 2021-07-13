@@ -1,7 +1,7 @@
-$ ~/.local/bin/esptool.py -p /dev/ttyUSB0 read_mac
+$ esptool.py -p /dev/ttyUSB0 read_mac
 esptool.py v3.1
 Serial port /dev/ttyUSB0
-Connecting......
+Connecting....
 Detecting chip type... ESP32
 Chip is ESP32-PICO-D4 (revision 1)
 Features: WiFi, BT, Dual Core, 240MHz, Embedded Flash, VRef calibration in efuse, Coding Scheme None
@@ -13,5 +13,50 @@ Stub running...
 MAC: 24:a1:60:52:40:c0
 Hard resetting via RTS pin...
 
-$ ./.local/bin/esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 750000 --before default_reset write_flash -z --flash_mode dio --flash_freq 80m --flash_size detect 0x1000 ~/git/github/phycomp/m5stack/fw/UIFlow_Matrix-v1.8.0.bin
+$ esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 750000 --before default_reset write_flash -z --flash_mode dio --flash_freq 80m --flash_size detect 0x1000 ~/git/github/phycomp/m5stack/fw/UIFlow_Matrix-v1.8.0.bin
+esptool.py v3.1
+Serial port /dev/ttyUSB0
+Connecting.....
+Chip is ESP32-PICO-D4 (revision 1)
+Features: WiFi, BT, Dual Core, 240MHz, Embedded Flash, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 24:a1:60:52:40:c0
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 750000
+Changed.
+Configuring flash size...
+Auto-detected Flash size: 4MB
+Flash will be erased from 0x00001000 to 0x003fdfff...
+Compressed 4182016 bytes to 1924917...
+Wrote 4182016 bytes (1924917 compressed) at 0x00001000 in 40.2 seconds (effective 832.8 kbit/s)...
+Hash of data verified.
 
+Leaving...
+Hard resetting via RTS pin...
+
+
+dopo il reset hardware e in modalità REPL:
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 188777542, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0018,len:4
+load:0x3fff001c,len:5280
+ho 0 tail 12 room 4
+load:0x40078000,len:12908
+load:0x40080400,len:3512
+entry 0x4008063c
+
+       _  __ _               
+ _   _(_)/ _| | _____      __
+| | | | | |_| |/ _ \ \ /\ / /
+| |_| | |  _| | (_) \ V  V / 
+ \__,_|_|_| |_|\___/ \_/\_/  
+
+APIKEY: CB455681
+MicroPython b388a3dca-dirty on 2021-07-02; M5Stack with ESP32
+Type "help()" for more information.
+>>> 
