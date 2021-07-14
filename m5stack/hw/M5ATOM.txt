@@ -60,3 +60,20 @@ APIKEY: CB455681
 MicroPython b388a3dca-dirty on 2021-07-02; M5Stack with ESP32
 Type "help()" for more information.
 >>> 
+
+$ ampy -p /dev/ttyUSB0 ls -lr
+/flash/apps/uart-transfer.py - 3177 bytes
+/flash/blocks - 1073488848 bytes
+/flash/boot.py - 0 bytes
+/flash/emojiImg/3.jpg - 20256 bytes
+/flash/emojiImg/4.jpg - 19381 bytes
+/flash/img/m5stack.pbm - 685 bytes
+/flash/img/m5stack.png - 9339 bytes
+/flash/img/uiflow_logo.bmp - 19254 bytes
+/flash/main.py - 0 bytes
+/flash/res/default.jpg - 4414 bytes
+/flash/res/error.jpg - 5370 bytes
+/flash/res/mix.wav - 368916 bytes
+/flash/temp.py - 84 bytes
+/flash/test.py - 0 bytes
+/flash/update/update.json - 70 bytes
