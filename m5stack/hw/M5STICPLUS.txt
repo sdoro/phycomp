@@ -36,3 +36,37 @@ Hash of data verified.
 Leaving...
 Hard resetting via RTS pin...
 
+$ ampy -p /dev/ttyUSB0 ls -lr
+/flash/apps/color-track.py - 1315 bytes
+/flash/apps/heartrate.py - 1233 bytes
+/flash/apps/line-triangle.py - 1373 bytes
+/flash/apps/motion-detect.py - 1117 bytes
+/flash/apps/target_track.py - 1080 bytes
+/flash/blocks - 1073488880 bytes
+/flash/boot.py - 21 bytes
+/flash/emojiImg/3.jpg - 20256 bytes
+/flash/emojiImg/4.jpg - 19381 bytes
+/flash/img/app_run.jpg - 1607 bytes
+/flash/img/cloud-connect.jpg - 34396 bytes
+/flash/img/cloud-disconnect.jpg - 35298 bytes
+/flash/img/m5stack.pbm - 685 bytes
+/flash/img/m5stack.png - 9339 bytes
+/flash/img/menu_app.jpg - 29268 bytes
+/flash/img/menu_code.jpg - 25690 bytes
+/flash/img/menu_setup.jpg - 25649 bytes
+/flash/img/pyfile.bmp - 19256 bytes
+/flash/img/uiflow_logo.bmp - 19254 bytes
+/flash/img/usb-connect.jpg - 29724 bytes
+/flash/img/usb-disconnect.jpg - 30457 bytes
+/flash/img/usb.jpg - 4788 bytes
+/flash/img/wifiReconnect.jpg - 17085 bytes
+/flash/img/wifi_logo.jpg - 8971 bytes
+/flash/img/wificonfig.jpg - 29875 bytes
+/flash/img/wificonnect.jpg - 30375 bytes
+/flash/main.py - 89 bytes
+/flash/res/default.jpg - 1523 bytes
+/flash/res/error.jpg - 2947 bytes
+/flash/res/mix.wav - 368916 bytes
+/flash/temp.py - 122 bytes
+/flash/test.py - 65946 bytes
+/flash/update/update.json - 70 bytes
