@@ -20,3 +20,11 @@
 ### deactivate virtual env: ~/mu-editor
 
 	deactivate
+
+
+### upgrade
+
+	source ~/mu-editor/bin/activate
+	# edit requirements.txt as needed
+	pip install --upgrade -r requirements.txt
+
