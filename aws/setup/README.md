@@ -6,3 +6,7 @@
 	dpkg -i code_1.62.3-1637137107_amd64.deb
 	# install plaformio ide
 
+### setup Android
+
+	# install ESP RainMaker
+
