@@ -18,4 +18,5 @@ con errore quando si imposta il WiFi.
 ### in data 24.11.2021
 
 Ho provato a installare UIFlow per Core2 e ha funzionato!
+Funziona anche l'immagine Core2_Tools
 
