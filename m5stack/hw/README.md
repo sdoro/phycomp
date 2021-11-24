@@ -15,4 +15,7 @@ Nei sistemi linux dove potrebbe essere installato Python versione 2
 questo permette di risolvere il problema in M5Burner di terminare
 con errore quando si imposta il WiFi.
 
+### in data 24.11.2021
+
+Ho provato a installare UIFlow per Core2 e ha funzionato!
 
