@@ -6,6 +6,8 @@ Se si vuole reimpostare 'da zero' la box occorre un erase della flash
 prima del burn. Questo ricostruirà la key e cancellerà o reimposterà
 la configurazione WiFi.
 
+$ esptool.py -p /dev/ttyUSB0 erase_flash
+
 
 Nei sistemi linux dove potrebbe essere installato Python versione 2
 è bene lanciare il comando:
