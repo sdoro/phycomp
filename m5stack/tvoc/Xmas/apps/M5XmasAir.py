@@ -21,7 +21,7 @@ to do sending data via MQTT towards Openhab
 from m5stack import *
 from m5ui import *
 from uiflow import *
-#import gc    no cloud
+# import gc # no cloud
 from machine import Pin, I2C
 import ujson
 import utime
@@ -29,8 +29,8 @@ import time
 
 from sgp30 import SGP30
 # from config import *
-I2C_SCL_GPIO = const(33)    # AWS specific
-I2C_SDA_GPIO = const(32)    # AWS specific
+I2C_SCL_GPIO = const(33)      # AWS specific
+I2C_SDA_GPIO = const(32)      # AWS specific
 I2C_FREQ = const(100000)
 
 
@@ -94,17 +94,17 @@ def run():
         if eco2 > 1000:
             level_co2 = "Danger"
         label3.setText('CO2: ' + str(eco2) + " " + level_co2 + '\n' +
-            '           TVOC: ' + str(tvoc) + " " + level)
+            '     TVOC: ' + str(tvoc) + " " + level)
         time.sleep(1)
         h2, ethanol = sgp30.raw_air_quality
         timestamp = utime.time() + epoch_offset
-        print('H2 measure', + h2)
-        print('Ethanol measure', + ethanol)
+#        print('H2 measure', + h2)
+#        print('Ethanol measure', + ethanol)
 #        label4.setText('H2: ' + str(h2) + '\n' +
- #           'Ethanol: ' + str(ethanol))
+#           'Ethanol: ' + str(ethanol))
         time.sleep(1)
         
-        # gc.collect()  no cloud
+        # gc.collect() # no cloud
 
         # Baselines should be saved after 12 hour the first 
         # time, then every hour according to the doc.
@@ -129,19 +129,16 @@ def run():
             except:
                 print('Impossible to write SGP30 baselines!')
 
-        # gc.collect() no cloud
+        gc.collect()
 
 #setScreenColor(0xe9efd9)
 setScreenColor(0xFFFFFF)
 
 image1 = M5Img(60, 100, "res/scholar4.jpg", True)
-#label0 = M5TextBox(120, 40, "Status:", lcd.FONT_Default, 0xFF0000, rotate=0)
-label1 = M5TextBox(90, 60, "", lcd.FONT_Default, 0xFF0000, rotate=0)
+#label0 = M5TextBox(120, 40, "Status:", lcd.FONT_DejaVu24, 0xFF0000, rotate=0)
+label1 = M5TextBox(90, 60, "", lcd.FONT_DejaVu24, 0xFF0000, rotate=0)
 label2 = M5TextBox(25, 10, "M5 Xmas air monitor", lcd.FONT_DejaVu24, 0xFF0000, rotate=0)
-label3 = M5TextBox(75, 40, "", lcd.FONT_Default, 0xFF0000, rotate=0)
-label4 = M5TextBox(0, 140, "", lcd.FONT_Default, 0xFF0000, rotate=0)
-label5 = M5TextBox(90, 120, "", lcd.FONT_Default, 0xFF0000, rotate=0)
-label6 = M5TextBox(90, 140, "", lcd.FONT_Default, 0xFF0000, rotate=0)
-label7 = M5TextBox(90, 160, "", lcd.FONT_Default, 0xFF0000, rotate=0)   
+label3 = M5TextBox(45, 40, "", lcd.FONT_DejaVu24, 0xFF0000, rotate=0)
+
         
 run()
