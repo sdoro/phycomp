@@ -65,6 +65,6 @@ btnA.wasPressed(buttonA_wasPressed)
 
 uart1 = machine.UART(1, tx=26, rx=32)
 uart1.init(115200, bits=8, parity=None, stop=1)
-rgb.setBrightness(2)
+rgb.setBrightness(30)
 rgb.set_screen([0,0,0,0,0,0,0,0,0,0xffff00,0,0,0,0xffff00,0,0xffff00,0,0xffff00,0,0,0,0xffff00,0,0,0])
 

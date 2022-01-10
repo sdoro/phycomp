@@ -6,7 +6,7 @@ msgStr = 'empty'
 
 while True:
     if uart.any():
-        sleep(400)
+        sleep(100)
         msgByte = uart.read()
         msgStr = str(msgByte, 'UTF-8')
         print("> " + msgStr[0])
@@ -16,7 +16,7 @@ while True:
         display.show("X")
         break
 
-    sleep(1000)
+    sleep(500)
 
 # return control to USB UART
 uart.init(baudrate=115200)
