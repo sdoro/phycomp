@@ -42,19 +42,19 @@ def end_send():
         tasks.only_one_of(tasks.when_then(modem_state_changed, end_send), tasks.after(60000, assume_sent))  # workaround for AT+DTRX response lines
     elif state == SENT:
         magenta()
-        tasks.after(300000, start_send)
+        tasks.after(150000, start_send)
     elif state == RETRY:
         red()
-        tasks.after(300000, start_send)
+        tasks.after(150000, start_send)
     elif state == NOT_JOINED:
         red()
-        tasks.after(300000, start_join)
+        tasks.after(150000, start_join)
     else:
         raise NotImplementedError()
 
 def assume_sent():
     magenta()
-    tasks.after(240000, start_send)
+    tasks.after(90000, start_send)
 
 
 from machine import Pin
