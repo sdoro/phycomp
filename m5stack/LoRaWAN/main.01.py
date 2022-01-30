@@ -3,18 +3,10 @@ from machine import UART
 from lora_states import NOT_JOINED, JOINING, JOINED, SENDING, SENT, RETRY
 from asr6501 import ASR6501
 
-
-from machine import Pin
-from time import sleep
-import dht
-
-sensor = dht.DHT11(Pin(21))
-
-
 tasks = Tasks()
 uart2 = UART(2, tx=26, rx=32)
 uart2.init(baudrate=115200, bits=8, parity=None, stop=1, txbuf=256, rxbuf=256)
-modem = ASR6501(uart2, '70B3D57ED004BD29', '0000000000000000', '55B18BA75CF2F65AEC19D139D519B280')  # DevEUI, AppEUI, AppKey as hex codes
+modem = ASR6501(uart2, '70B3D57ED004AEC4', '0000000000000000', '1A02BBC6664AA1878BAC050A447ABEC6')  # DevEUI, AppEUI, AppKey as hex codes
 count = 0
 
 def modem_state_changed():
@@ -39,18 +31,9 @@ def end_join():
     
 def start_send():
     global count
-    global sensor
     count += 1
     blue()
-    #modem.send_message(bytes(str(count), 'ASCII'), count % 29 == 1)  # message, confirmed
-    sensor.measure()
-    temp = sensor.temperature()
-    hum = sensor.humidity()
-    t1 = int(temp)
-    t2 = int((temp - t1) * 100)
-    h = int(hum)
-    payload = count.to_bytes(1, 'little') + t1.to_bytes(1, 'little') + t2.to_bytes(1, 'little') + h.to_bytes(1, 'little')
-    modem.send_message(payload, count % 29 == 1)  # message, confirmed
+    modem.send_message(bytes(str(count), 'ASCII'), count % 29 == 1)  # message, confirmed
     tasks.when_then(modem_state_changed, end_send)
 
 def end_send():
@@ -74,15 +57,17 @@ def assume_sent():
     tasks.after(90000, start_send)
 
 
-#from machine import Pin
+from machine import Pin
 from neopixel import NeoPixel
 
 gpio27 = Pin(27, Pin.OUT)
 neopixels = NeoPixel(gpio27, 1)
 
 def yellow():
+    print("inizio yellow")
     neopixels[0] = (01, 01, 01)
     neopixels.write()
+    print("fine yellow")
 
 def green():
     neopixels[0] = (0, 25, 0)
