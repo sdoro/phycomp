@@ -43,6 +43,7 @@ def start_send():
     count += 1
     blue()
     #modem.send_message(bytes(str(count), 'ASCII'), count % 29 == 1)  # message, confirmed
+    #modem.send_message(count.to_bytes(1, 'little'), count % 29 == 1) # message, confirmed
     sensor.measure()
     temp = sensor.temperature()
     hum = sensor.humidity()
@@ -50,7 +51,7 @@ def start_send():
     t2 = int((temp - t1) * 100)
     h = int(hum)
     payload = count.to_bytes(1, 'little') + t1.to_bytes(1, 'little') + t2.to_bytes(1, 'little') + h.to_bytes(1, 'little')
-    modem.send_message(payload, count % 29 == 1)  # message, confirmed
+    modem.send_message(payload, count % 5 == 0)                       # message, confirmed
     tasks.when_then(modem_state_changed, end_send)
 
 def end_send():
