@@ -3,9 +3,13 @@
 	apt autoremove --purge snapd
 	apt-mark hold snapdA
 
-# install aseba
+# install Flatpak
 	apt install gnome-software-plugin-flatpak
+
+# install Flathub repository
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# install aseba
 	flatpak install flathub org.mobsya.ThymioSuite
 
 # run aseba
