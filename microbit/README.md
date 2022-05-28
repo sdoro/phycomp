@@ -15,4 +15,8 @@ della scheda al su termine.
 
 When you first unbox and plug in a brand new micro:bit, it runs a special demonstration program that shows off some of its features in a playful way. We call this the 'out of box experience' program (https://microbit.org/get-started/user-guide/out-of-box-experience/)
 
+# printint
+
+Per vedere le eventuali chiamate a print occorre andare in REPL e dare un CTRL-D
+che realizza un soft-reboot e dunque si vedranno.
 
