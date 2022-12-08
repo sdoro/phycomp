@@ -30,6 +30,8 @@ ad esempio /etc/udev/rules.d/50-microbit.rules:
 
 # Create rule
 sudo cat << EOF >> /etc/udev/rules.d/50-microbit.rules
+# udev rules for WebUSB Troubleshooting
+# micro:bit
 SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0664", GROUP="dialup"
 EOF
 
@@ -38,4 +40,12 @@ sudo usermod -a -G dialup $USER
 
 # Reload udev rules
 sudo udevadm control --reload-rules
+
+
+# micropython
+La versione base per la scheda v2.0 è vecchia ma viene aggiornata (05.12.2022)
+quando con Chrome carichiamo un programma a:
+
+MicroPython v1.18 on 2022-11-10; micro:bit v2.1.1 with nRF52833
+
 
