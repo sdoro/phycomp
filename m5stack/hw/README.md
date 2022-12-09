@@ -22,3 +22,56 @@ con errore quando si imposta il WiFi.
 Ho provato a installare UIFlow per Core2 e ha funzionato!
 Funziona anche l'immagine Core2_Tools
 
+## in data 09.12.2022
+
+Ho provato (Ubuntu 22.04), dopo un read_mac, ad attivare REPL
+e funziona:
+
+	picocom /dev/ttyUSB0 -b115200
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 188777542, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,
+>>>
+
+# Un CTRL-D provoca questo output
+MPY: soft reboot
+
+       _  __ _               
+ _   _(_)/ _| | _____      __
+| | | | | |_| |/ _ \ \ /\ / /
+| |_| | |  _| | (_) \ V  V / 
+ \__,_|_|_| |_|\___/ \_/\_/  
+
+APIKEY: B81F9D52
+MicroPython 15314de58-dirty on 2021-12-31; M5Stack with ESP32
+Type "help()" for more information.
+
+
