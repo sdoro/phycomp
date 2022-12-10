@@ -2,6 +2,7 @@
 # Test su m5 Lite di micropython ufficiale (https://micropython.org/download/M5STACK_ATOM/)
 
 $ esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
+```
 esptool.py v4.4
 Serial port /dev/ttyUSB0
 Connecting.....
@@ -15,10 +16,12 @@ Stub running...
 Erasing flash (this may take a while)...
 Chip erase completed successfully in 7.1s
 Hard resetting via RTS pin...
+```
 
 
 
 $ esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 115200 write_flash -z 0x1000 M5STACK_ATOM-20220618-v1.19.1.bin
+```
 esptool.py v4.4
 Serial port /dev/ttyUSB0
 Connecting....
@@ -37,11 +40,14 @@ Hash of data verified.
 
 Leaving...
 Hard resetting via RTS pin...
+```
 
 
 $ picocom  /dev/ttyUSB0 -b115200
+```
 [...]
 MicroPython v1.19.1 on 2022-06-18; M5Stack ATOM with ESP32-PICO-D4
 Type "help()" for more information.
 >>> 
+```
 
