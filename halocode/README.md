@@ -1,6 +1,7 @@
 # using Ubuntu esptool
 
 	esptool -p /dev/ttyUSB0 chip_id
+```
 esptool.py v2.8
 Serial port /dev/ttyUSB0
 Connecting....
@@ -13,10 +14,12 @@ Enabling default SPI flash mode...
 Warning: ESP32 has no Chip ID. Reading MAC instead.
 MAC: ec:94:cb:5e:19:e8
 Hard resetting via RTS pin...
+```
 
 # using esptool installed using pip
 
 	esptool.py -p /dev/ttyUSB0 chip_id
+```
 esptool.py v4.4
 Serial port /dev/ttyUSB0
 Connecting....
@@ -33,4 +36,5 @@ Stub running...
 Warning: ESP32 has no Chip ID. Reading MAC instead.
 MAC: ec:94:cb:5e:19:e8
 Hard resetting via RTS pin...
+```
 
