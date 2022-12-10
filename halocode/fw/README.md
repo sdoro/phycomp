@@ -35,3 +35,6 @@ MicroPython f3359b1 on 2019-06-27; ESP32 module with ESP32
 # per uscire da picocom
 
 	C-a C-x
+
+# il firmware più aggiornato, chiamato 25_01_009, una volta installato
+# NON permette la digitazione al prompt di micropython. Quindi meglio 004
