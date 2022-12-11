@@ -1,6 +1,6 @@
-# using Ubuntu esptool
+# using Ubuntu esptool package
 
-	esptool -p /dev/ttyUSB0 chip_id
+$ esptool -p /dev/ttyUSB0 chip_id
 ```
 esptool.py v2.8
 Serial port /dev/ttyUSB0
@@ -18,7 +18,7 @@ Hard resetting via RTS pin...
 
 # using esptool installed with pip
 
-	esptool.py -p /dev/ttyUSB0 chip_id
+$ esptool.py -p /dev/ttyUSB0 chip_id
 ```
 esptool.py v4.4
 Serial port /dev/ttyUSB0
@@ -38,7 +38,7 @@ MAC: ec:94:cb:5e:19:e8
 Hard resetting via RTS pin...
 ```
 
-# machine.reset()
+# use of machine.reset() in REPL
 
 ```
 >>> import machine
@@ -57,8 +57,15 @@ load:0x40080400,len:6160
 entry 0x40080684
 firmware version is:25.01.009
 build time: Jan  6 2021, 18:06:02
-�MicroPython 39860aad-dirty on 2021-01-06; ESP32 module with ESP32
+MicroPython 39860aad-dirty on 2021-01-06; ESP32 module with ESP32
 Type "help()" for more information.
 >>>
+```
+# use of os.uname() in REPL
+
+```
+>>> import os
+>>> os.uname()
+(sysname='esp32', nodename='esp32', release='1.11.0', version='39860aad-dirty on 2021-01-06', machine='ESP32 module with ESP32')
 ```
 
