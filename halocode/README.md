@@ -38,3 +38,27 @@ MAC: ec:94:cb:5e:19:e8
 Hard resetting via RTS pin...
 ```
 
+# machine.reset()
+
+```
+>>> import machine
+>>> machine.reset()
+ets Jun  8 2016 00:22:57
+
+rst:0xc (SW_CPU_RESET),boot:0x33 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0018,len:4
+load:0x3fff001c,len:612
+load:0x40078000,len:8468
+ho 0 tail 12 room 4
+load:0x40080400,len:6160
+entry 0x40080684
+firmware version is:25.01.009
+build time: Jan  6 2021, 18:06:02
+�MicroPython 39860aad-dirty on 2021-01-06; ESP32 module with ESP32
+Type "help()" for more information.
+>>>
+```
+
