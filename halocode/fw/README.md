@@ -101,3 +101,12 @@ I (71200) pm_esp32: Frequency switching config: CPU_MAX: 240, APB_MAX: 240, APB_
 240000000
 ```
 
+# updated to current micropython 1.19.1
+
+```
+>>> 
+MPY: soft reboot
+MicroPython v1.19.1 on 2022-06-18; ESP32 module with ESP32
+Type "help()" for more information.
+>>> 
+```
