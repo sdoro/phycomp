@@ -110,3 +110,15 @@ MicroPython v1.19.1 on 2022-06-18; ESP32 module with ESP32
 Type "help()" for more information.
 >>> 
 ```
+
+# il firmware 25_01_004
+
+Sembrerebbe un pò duro a dare il promt ma forse perchè con
+un thread fa il gioco di luci.
+
+```
+>>> 
+PYB: soft reboot
+�MicroPython 39860aad-dirty on 2021-01-06; ESP32 module with ESP32
+Type "help()" for more information.
+```
