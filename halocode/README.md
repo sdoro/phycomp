@@ -16,7 +16,7 @@ MAC: ec:94:cb:5e:19:e8
 Hard resetting via RTS pin...
 ```
 
-# using esptool installed using pip
+# using esptool installed with pip
 
 	esptool.py -p /dev/ttyUSB0 chip_id
 ```
