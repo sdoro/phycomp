@@ -1,7 +1,7 @@
 
 # load ESP firmware using espool
 
-	$ esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 firefly_firmware_25_01_004-ht1.bin
+$ esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 firefly_firmware_25_01_004-ht1.bin
 ```
 esptool.py v4.4
 Serial port /dev/ttyUSB0
@@ -25,16 +25,14 @@ Hard resetting via RTS pin...
 
 # connect to REPL
 
-	$ picocom  /dev/ttyUSB0 -b115200
+$ picocom  /dev/ttyUSB0 -b115200
 ```
 [...]
 MicroPython f3359b1 on 2019-06-27; ESP32 module with ESP32
 [...]
 ```
 
-# per uscire da picocom
-
-	C-a C-x
+per uscire da picocom: C-a C-x
 
 il firmware più aggiornato, chiamato 25_01_009, una volta installato
 NON permette la digitazione al prompt di micropython. Quindi meglio lo 004
@@ -119,6 +117,7 @@ un thread fa il gioco di luci.
 ```
 >>> 
 PYB: soft reboot
-�MicroPython 39860aad-dirty on 2021-01-06; ESP32 module with ESP32
+MicroPython 39860aad-dirty on 2021-01-06; ESP32 module with ESP32
 Type "help()" for more information.
 ```
+
