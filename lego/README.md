@@ -31,10 +31,15 @@ __version__ = "4.0.0-gecko.7"
 
 $ picocom  /dev/ttyACM0
 C-c
-MicroPython v1.14-876-gfbecba865 on 2021-05-04; LEGO Technic Large Hub with STM32F413xx
+MicroPython 1b7af80af on 2022-11-29; SPIKE Prime with STM32F413
 Type "help()" for more information.
->>> 
+>>> import os
+>>> os.uname()
+(sysname='SPIKE', nodename='SPIKE', release='1.19.1', version='1b7af80af on 2022-11-29', machine='SPIKE Prime with STM32F413')
 
+
+
+Prima dell'aggiornamento e utilizzando screen:
 
 $ screen /dev/ttyACM0
 C-c
