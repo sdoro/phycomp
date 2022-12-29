@@ -1,4 +1,7 @@
 
+# Alcuni comandi da terminale usando `ampy`, `picocom`, `screen` per visualizzare info
+
+
 ```
 $ ampy -p /dev/ttyACM0 ls
 /.flash_hash
