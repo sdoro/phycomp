@@ -1,0 +1,95 @@
+
+-- environment Chrome
+
+Quando parte Chrome apre un fastidioso popup dove chiede la password dell'utente locale.
+Per rimuovere questo funzionamento, facciamo:
+
+1. digitiamo la password
+2. verifichiamo dopo un reboot se il popup é scomparso
+
+In caso affermativo, rifacciamo il clone della home, la copiamo su un
+secondo pc e passiamo a verificare il funzionamento sul secondo pc.
+
+(Per una brutale eliminazione si può 'rm ~/.local/share/keyrings/*' ma è sconsigliabile
+ anche perchè bisogna comunque impostare la password.)
+
+-- environment udev
+
+Per permettere a Chrome di usare i dispositivi USB con l'API WebUSB tramite javascript
+occorre che il dispositivo appartenga allo stesso gruppo a cui appartiene l'utente.
+A questo scopo si procede così:
+1. si associa l'utente al gruppo 'dialout' con: adduser $USER dialout
+2. si costruisce la regola che all'inserimento del particolare dispositivo USB
+   gli associa il gruppo 'dialout'
+3. si riavvia il gestore delle regole in modo che rilegga la configurazione
+
+I dispositivi che per ora utilizzeremo sono i micro:bit e i LEGO Spike e le
+due regole e i due commenti sono:
+
+----------------------------------------------------------------------
+# micro:bit
+SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0664", GROUP="dialout"
+# LEGO:
+SUBSYSTEM=="usb", ATTR{idVendor}=="0694", MODE="0664", GROUP="dialout"
+----------------------------------------------------------------------
+
+Le precedenti quattro righe saranno memorizzate in un file di nome 'stem.rules'
+e caricato nella directory '/etc/udev/rules.d/'
+
+Prima di inserire il nuovo dispositivo si riavvia il demone: 'udevadm control --reload-rules'
+o si aspetta il prossimo reboot.
+
+Per verificare se il dispositivo è stato associato al gruppo corretto,
+si può utilizzare il comando 'ls -l /dev/bus/usb/' per vedere la proprietà del device.
+
+-- environment $USER
+
+Nel laboratorio gli utenti accedono alle stazioni locali senza password
+ma l'utente selezionato sul login deve essere 'studente STEM'.
+Ogni volta si esegue l'arresto (o il riavvio) della macchina, l'utente
+in questione deve essere ripristinato con la rimozione di tutti i
+lavori eseguiti dalla stazione precedentemente.
+
+Per questo scopo ad ogni boot la cartella viene totalmente rimossa
+e viene ripristinata una cartella predefinita all'inizio del corso.
+
+Il lancio dello script di nome 'stem-scritp.sh' residente nel percorso '/usr/local/bin'
+e autorizzato a tutti con il comando 'chmdo a+rx /usr/local/bin/stem-script.sh'
+viene attivato come service costruendo un file di nome 'home-restore.service'
+all'interno della cartella '/etc/systemd/system' con il seguente contenuto:
+
+---------------------------------------
+[Unit]
+Description=home student restore at boot time
+After=network.service
+
+[Service]
+User=root
+ExecStart=/usr/bin/bash /usr/local/bin/stem-script.sh
+Type=simple
+
+[Install]
+WantedBy=default.target
+---------------------------------------
+
+e abilitando il service con 'systemctl enable home-restore.service'
+
+-- environment $USER
+
+Per i corsi STEM verrà creato un apposito utente in tutte le stazioni:
+
+# adduser (before deluser to erase)
+# deluser --remove-all-files studentestem
+adduser --gecos "Studente STEM" --disabled-password --home /home/studentestem studentestem
+echo -e "XXXXXXXX\nXXXXXXXX" | passwd studentestem
+
+
+-- environment $USER auto login
+
+Per abilitare l'auto login occorre mettere come prima riga:
+
+auth sufficient pam_succeed_if.so user ingroup studentestem
+
+nel file di configurazione di lighdm: /etc/pam.d/lightdm
+o nel file di configurazione di gdm: /etc/pam.d/gdm-password
+
