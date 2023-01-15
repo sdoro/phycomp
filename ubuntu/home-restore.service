@@ -1,0 +1,11 @@
+[Unit]
+Description=home student restore at boot time
+After=network.service
+
+[Service]
+User=root
+ExecStart=/usr/bin/bash /usr/local/bin/stem-script.sh
+Type=simple
+
+[Install]
+WantedBy=default.target
