@@ -1,5 +1,5 @@
 [Unit]
-Description=home student restore at boot time
+Description=restore at boot time student's home
 After=network.service
 
 [Service]

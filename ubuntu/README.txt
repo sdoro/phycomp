@@ -1,22 +1,26 @@
 
+
 -- environment Chrome
 
-Quando parte Chrome apre un fastidioso popup dove chiede la password dell'utente locale.
-Per rimuovere questo funzionamento, facciamo:
+Alla partenza di Chrome si apre un fastidioso popup dove chiede la password dell'utente
+locale. Per rimuovere questo funzionamento:
 
-1. digitiamo la password
-2. verifichiamo dopo un reboot se il popup é scomparso
+1. digitare la password dell'utente
+2. verificare che dopo un reboot l'assenza del popup 
 
-In caso affermativo, rifacciamo il clone della home, la copiamo su un
-secondo pc e passiamo a verificare il funzionamento sul secondo pc.
+In caso affermativo, rifare il clone della home, copiare su un secondo
+pc e al termine verifica del corretto funzionamento sul secondo pc.
 
 (Per una brutale eliminazione si può 'rm ~/.local/share/keyrings/*' ma è sconsigliabile
  anche perchè bisogna comunque impostare la password.)
+
+
 
 -- environment udev
 
 Per permettere a Chrome di usare i dispositivi USB con l'API WebUSB tramite javascript
 occorre che il dispositivo appartenga allo stesso gruppo a cui appartiene l'utente.
+Nei sistemi Ubuntu (e altri) il gruppo si chiama 'dialout'.
 A questo scopo si procede così:
 1. si associa l'utente al gruppo 'dialout' con: adduser $USER dialout
 2. si costruisce la regola che all'inserimento del particolare dispositivo USB
@@ -36,19 +40,21 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="0694", MODE="0664", GROUP="dialout"
 Le precedenti quattro righe saranno memorizzate in un file di nome 'stem.rules'
 e caricato nella directory '/etc/udev/rules.d/'
 
-Prima di inserire il nuovo dispositivo si riavvia il demone: 'udevadm control --reload-rules'
-o si aspetta il prossimo reboot.
+Prima di inserire il nuovo dispositivo si riavvia il demone:
+'udevadm control --reload-rules' o si aspetta il prossimo reboot.
 
 Per verificare se il dispositivo è stato associato al gruppo corretto,
 si può utilizzare il comando 'ls -l /dev/bus/usb/' per vedere la proprietà del device.
+
+
 
 -- environment $USER
 
 Nel laboratorio gli utenti accedono alle stazioni locali senza password
 ma l'utente selezionato sul login deve essere 'studente STEM'.
-Ogni volta si esegue l'arresto (o il riavvio) della macchina, l'utente
-in questione deve essere ripristinato con la rimozione di tutti i
-lavori eseguiti dalla stazione precedentemente.
+Ogni volta si esegue il riavvio della macchina, l'utente in questione
+deve essere ripristinato con la rimozione di tutte le tracce dell'attività
+eseguita precedentemente dall'utente.
 
 Per questo scopo ad ogni boot la cartella viene totalmente rimossa
 e viene ripristinata una cartella predefinita all'inizio del corso.
@@ -74,9 +80,11 @@ WantedBy=default.target
 
 e abilitando il service con 'systemctl enable home-restore.service'
 
+
 -- environment $USER
 
-Per i corsi STEM verrà creato un apposito utente in tutte le stazioni:
+Per i corsi STEM verrà creato un apposito utente di nome 'studentestem' in tutte
+le stazioni:
 
 # adduser (before deluser to erase)
 # deluser --remove-all-files studentestem
@@ -86,7 +94,8 @@ echo -e "XXXXXXXX\nXXXXXXXX" | passwd studentestem
 
 -- environment $USER auto login
 
-Per abilitare l'auto login occorre mettere come prima riga:
+Per abilitare l'auto login senza password per l'utente 'studentestem' occorre mettere
+come prima riga:
 
 auth sufficient pam_succeed_if.so user ingroup studentestem
 

@@ -1,4 +1,5 @@
 # micro:bit
 SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0664", GROUP="dialout"
-# LEGO:
+# LEGO
 SUBSYSTEM=="usb", ATTR{idVendor}=="0694", MODE="0664", GROUP="dialout"
+# bot
