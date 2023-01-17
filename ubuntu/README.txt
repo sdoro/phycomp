@@ -50,6 +50,24 @@ si può utilizzare il comando 'ls -l /dev/bus/usb/' per vedere la proprietà del
 
 -- environment $USER
 
+Per i corsi STEM verrà creato un apposito utente di nome 'studentestem' in tutte
+le stazioni:
+
+------------------------------------------------------------------------------------------
+# adduser (before deluser to erase)
+# deluser --remove-all-files studentestem
+adduser --gecos "Studente STEM" --disabled-password --home /home/studentestem studentestem
+echo -e "XXXXXXXX\nXXXXXXXX" | passwd studentestem
+adduser studentestem dialout
+------------------------------------------------------------------------------------------
+
+
+
+
+
+
+-- environment $USER
+
 Nel laboratorio gli utenti accedono alle stazioni locali senza password
 ma l'utente selezionato sul login deve essere 'studente STEM'.
 Ogni volta si esegue il riavvio della macchina, l'utente in questione
@@ -63,12 +81,6 @@ Il lancio dello script di nome 'stem-scritp.sh' residente nel percorso '/usr/loc
 e autorizzato a tutti con il comando 'chmdo a+rx /usr/local/bin/stem-script.sh'
 viene attivato come service costruendo un file di nome 'home-restore.service'
 all'interno della cartella '/etc/systemd/system' con il seguente contenuto:
-
-
-
-
-
-
 
 ---------------------------------------
 [Unit]
@@ -85,17 +97,6 @@ WantedBy=default.target
 ---------------------------------------
 
 e abilitando il service con 'systemctl enable home-restore.service'
-
-
--- environment $USER
-
-Per i corsi STEM verrà creato un apposito utente di nome 'studentestem' in tutte
-le stazioni:
-
-# adduser (before deluser to erase)
-# deluser --remove-all-files studentestem
-adduser --gecos "Studente STEM" --disabled-password --home /home/studentestem studentestem
-echo -e "XXXXXXXX\nXXXXXXXX" | passwd studentestem
 
 
 -- environment $USER auto login
