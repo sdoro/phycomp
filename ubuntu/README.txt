@@ -5,14 +5,14 @@
 Alla partenza di Chrome si apre un fastidioso popup dove chiede la password dell'utente
 locale. Per rimuovere questo funzionamento:
 
-1. digitare la password dell'utente
-2. verificare che dopo un reboot l'assenza del popup 
+1. cp /usr/share/applications/google-chrome.desktop ~/.local/share/applications
+2. vi ~/.local/share/applications/google-chrome.desktop
+3. cerca ogni riga che inizia per 'Exec' e aggiungi '--password-store=basic' come
+   ad esempio:
+       Exec=/usr/bin/google-chrome-stable --password-store=basic %U
 
-In caso affermativo, rifare il clone della home, copiare su un secondo
-pc e al termine verifica del corretto funzionamento sul secondo pc.
-
-(Per una brutale eliminazione si può 'rm ~/.local/share/keyrings/*' ma è sconsigliabile
- anche perchè bisogna comunque impostare la password.)
+Rifare il clone della home, copiare su un secondo pc e infine verifica del corretto
+funzionamento su quest'ultimo pc.
 
 
 
@@ -63,6 +63,12 @@ Il lancio dello script di nome 'stem-scritp.sh' residente nel percorso '/usr/loc
 e autorizzato a tutti con il comando 'chmdo a+rx /usr/local/bin/stem-script.sh'
 viene attivato come service costruendo un file di nome 'home-restore.service'
 all'interno della cartella '/etc/systemd/system' con il seguente contenuto:
+
+
+
+
+
+
 
 ---------------------------------------
 [Unit]
