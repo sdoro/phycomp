@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# erase all student's home
+# erase student's home
 rm -rf /home/studentestem
 
 # restore default STEM student's home
