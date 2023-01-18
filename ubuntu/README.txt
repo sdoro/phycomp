@@ -3,16 +3,19 @@
 -- environment Chrome
 
 Alla partenza di Chrome si apre un fastidioso popup dove chiede la password dell'utente
-locale. Per rimuovere questo funzionamento:
+locale per accedere al keyring con il quale proteggere le password (se salvate) dei siti.
+É una funzionalità che non ha senso in laboratorio e quindi viene disabilitata.
 
 1. cp /usr/share/applications/google-chrome.desktop ~/.local/share/applications
 2. vi ~/.local/share/applications/google-chrome.desktop
-3. cerca ogni riga che inizia per 'Exec' e aggiungi '--password-store=basic' come
+3. cerca OGNI riga che inizia per 'Exec' e aggiungi '--password-store=basic' come
    ad esempio:
        Exec=/usr/bin/google-chrome-stable --password-store=basic %U
 
-Rifare il clone della home, copiare su un secondo pc e infine verifica del corretto
-funzionamento su quest'ultimo pc.
+Fare il clone della home con 'tar czf /tmp/stu.tgz /home/studentestem', copiare il file
+su '/root/stu.tgz', copiare il file su un secondo pc e infine verificare il corretto
+funzionamento su quest'ultimo pc. Al termine copiare il file '/root/stu.tgz' su tutte
+le stazioni.
 
 
 
@@ -41,20 +44,19 @@ Le precedenti quattro righe saranno memorizzate in un file di nome 'stem.rules'
 e caricato nella directory '/etc/udev/rules.d/'
 
 Prima di inserire il nuovo dispositivo si riavvia il demone:
-'udevadm control --reload-rules' o si aspetta il prossimo reboot.
+'udevadm control --reload-rules' o si aspetta il prossimo riavvio.
 
 Per verificare se il dispositivo è stato associato al gruppo corretto,
 si può utilizzare il comando 'ls -l /dev/bus/usb/' per vedere la proprietà del device.
 
 
 
--- environment $USER
+-- environment $USER create STEM user
 
 Per i corsi STEM verrà creato un apposito utente di nome 'studentestem' in tutte
-le stazioni:
+le stazioni e sarà aggiunto al gruppo 'dialout':
 
 ------------------------------------------------------------------------------------------
-# adduser (before deluser to erase)
 # deluser --remove-all-files studentestem
 adduser --gecos "Studente STEM" --disabled-password --home /home/studentestem studentestem
 echo -e "XXXXXXXX\nXXXXXXXX" | passwd studentestem
@@ -66,7 +68,7 @@ adduser studentestem dialout
 
 
 
--- environment $USER
+-- environment $USER restore previous setting student's home
 
 Nel laboratorio gli utenti accedono alle stazioni locali senza password
 ma l'utente selezionato sul login deve essere 'studente STEM'.
@@ -78,7 +80,7 @@ Per questo scopo ad ogni boot la cartella viene totalmente rimossa
 e viene ripristinata una cartella predefinita all'inizio del corso.
 
 Il lancio dello script di nome 'stem-scritp.sh' residente nel percorso '/usr/local/bin'
-e autorizzato a tutti con il comando 'chmdo a+rx /usr/local/bin/stem-script.sh'
+e con permessi di esecuzione a tutti con 'chmod a+rx /usr/local/bin/stem-script.sh'
 viene attivato come service costruendo un file di nome 'home-restore.service'
 all'interno della cartella '/etc/systemd/system' con il seguente contenuto:
 
