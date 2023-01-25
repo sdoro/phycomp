@@ -1,4 +1,4 @@
-#auth sufficient pam_succeed_if.so user ingroup studentestem
+auth sufficient pam_succeed_if.so user ingroup studentestem
 #%PAM-1.0
 auth    requisite       pam_nologin.so
 auth    sufficient      pam_succeed_if.so user ingroup nopasswdlogin
