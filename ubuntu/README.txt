@@ -123,5 +123,12 @@ di tutte le variazioni che non sono solo contenuti di file ma anche service:
 dpkg-reconfigure gdm3
 
 e selezionare 'gdm3' utilizzando TAB e frecce.
-Funziona (provato) con clusterssh (configurazione parallela di più stazioni).
+Funziona (provato) all'interno di clusterssh (configurazione parallela di più stazioni).
+
+
+-- environment Gnome Display Manage login's icon
+
+Per personalizzare il logo dell'account 'studentestem' caricare
+il file 'studentestem' nella directory '/var/lib/AccountsService/icons/'
+
 
