@@ -111,3 +111,17 @@ auth sufficient pam_succeed_if.so user ingroup studentestem
 nel file di configurazione di lighdm: /etc/pam.d/lightdm
 o nel file di configurazione di gdm: /etc/pam.d/gdm-password
 
+
+-- environment display manager
+
+visto tutto l'insieme di operazioni che sono state organizzate, l'utente guest
+disponibile solo in lightdm (con qualche problema di sicurezza) non é più
+necessario e quindi occorre impostare di default 'Gnome Display Manager (gdm3).
+Attenzione di utilizzare il seguente comando che si prende la responsabilità
+di tutte le variazioni che non sono solo contenuti di file ma anche service:
+
+dpkg-reconfigure gdm3
+
+e selezionare 'gdm3' utilizzando TAB e frecce.
+Funziona (provato) con clusterssh (configurazione parallela di più stazioni).
+
