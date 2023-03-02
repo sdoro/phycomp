@@ -21,7 +21,7 @@ while True:
     if button_a.was_pressed():
         print('a pressed')
         if dx:
-            print('sx')
+            print('dx')
             # chiama ruota a dx per lock 
             lucchetto.giraDestra(lock)
             im = Image.ARROW_W
@@ -54,7 +54,7 @@ while True:
         lock = 0
         im = Image.ARROW_E
         display.show(im)
-        sx = True
+        dx = True
         
     sleep(1000)
     val = pin0.read_analog()
