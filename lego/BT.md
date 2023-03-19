@@ -46,7 +46,7 @@ Device 30:E2:83:05:1E:1D LEGO Hub@PROF
 [bluetooth]#
 ```
 
-Exit out of bluetoothctl and use rfcomm to create a /dev/rfcomm0 device:
+Exit out of bluetoothctl and use rfcomm to create a /dev/rfcomm0 device (serial):
 
 ```
 $ sudo rfcomm bind 0 40:BD:32:46:9D:3F
@@ -66,3 +66,14 @@ Type "help()" for more information.
 ctrl-C
 >>> import hub
 ```
+
+To escape the screen (and the shell), you type ctrl + a, and then :quit
+
+
+When you are done using the Spike, my suggestion would be to release the port:
+
+```
+sudo rfcomm release 0
+```
+
+
