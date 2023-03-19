@@ -9,11 +9,14 @@ drive_motors = MotorPair('C', 'D')
 # Sets the default motor speed. The value will be set to "-100" or "100". Default 100
 drive_motors.set_default_speed(20)
 
-# Sets the ratio of one motor rotation to the distance traveled.
-# The distance that the Driving Base moves when both motors move one rotation each. default 17.6
-drive_motors.set_motor_rotation(17.8, 'cm')
+# Set the distance that the robot travels for one rotation of its wheels.
+# The value 17.6 comes from the diameter of the wheel (5.6cm) multiplied by "π" (3.1415).
+drive_motors.set_motor_rotation(17.6, 'cm')
 
-wait_for_seconds(1)
+# Activate the brakes when the robot stops. The other conditions are 'hold' and 'coast'.
+motor_pair.set_stop_action('brake')
+
+wait_for_seconds(1)              # Wait for one second.
 
 for x in range(4):
 
