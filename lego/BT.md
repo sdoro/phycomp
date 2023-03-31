@@ -1,4 +1,13 @@
 
+
+Enable Bluetooth from terminal:
+
+
+```
+bluetoothctl power on
+```
+
+
 Use bluetoothctl to enable bluetooth and scanning:
 
 ```
@@ -55,7 +64,7 @@ crw-rw---- 1 root dialout 216, 0 May  3 08:15 /dev/rfcomm0
 $
 ```
 
-Use screen to connect to /dev/rfcomm0:
+Use screen to connect to /dev/rfcomm0 (just done sudo adduser $USER dialout?):
 
 ```
 $ screen /dev/rfcomm0
