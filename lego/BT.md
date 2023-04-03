@@ -92,3 +92,13 @@ bluetoothctl remove 30:E2:83:05:1E:1D
 bluetoothctl disconnect 30:E2:83:05:1E:1D
 ```
 
+Put in a script:
+
+```
+bluetoothctl -- pair 30:E2:83:05:1E:1D
+sleep 10
+bluetoothctl -- trust 30:E2:83:05:1E:1D
+bluetoothctl -- connect 30:E2:83:05:1E:1D
+sleep 5
+```
+
