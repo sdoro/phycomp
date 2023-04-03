@@ -58,7 +58,7 @@ Device 30:E2:83:05:1E:1D LEGO Hub@PROF
 Exit out of bluetoothctl and use rfcomm to create a /dev/rfcomm0 device (serial):
 
 ```
-$ sudo rfcomm bind 0 40:BD:32:46:9D:3F
+$ sudo rfcomm bind 0 30:E2:83:05:1E:1D
 $ ls -l /dev/rfcomm0
 crw-rw---- 1 root dialout 216, 0 May  3 08:15 /dev/rfcomm0
 $
@@ -85,4 +85,10 @@ When you are done using the Spike, my suggestion would be to release the port:
 sudo rfcomm release 0
 ```
 
+Also:
+
+```
+bluetoothctl remove 30:E2:83:05:1E:1D
+bluetoothctl disconnect 30:E2:83:05:1E:1D
+```
 
