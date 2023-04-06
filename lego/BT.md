@@ -5,6 +5,7 @@ Enable Bluetooth from terminal:
 
 ```
 bluetoothctl power on
+rfkill unblock bluetooth
 ```
 
 
