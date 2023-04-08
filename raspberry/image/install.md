@@ -4,16 +4,13 @@ apt install code -y
 apt install mc arj dbview lynx unar wimtools mtools -y
 apt install screen -y
 apt install wireshark -y
-apt install python3-pip -y
-apt install git -y
 apt install gedit gedit-plugins -y
 apt install picocom -y
-apt install pgadmin3 -y
+# pgadmin3 esiste solo nella versione a 32 bits :-(
+#apt install pgadmin3 -y
 apt install libreoffice -y
 apt install lxplug-magnifier -y
 apt install kicad -y
-apt install thonny -y
-apt install code -y
 apt install realvnc-vnc-viewer -y
 apt install gitg -y
 apt install pdftk pdfarranger -y
