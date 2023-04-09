@@ -17,6 +17,7 @@ apt install pdftk pdfarranger -y
 apt install gimp gimp-help-en gimp-data-extras -y
 apt install vim exuberant-ctags vim-doc vim-scripts -y
 apt install colordiff bleachbit cream tmux vim-addon-manager vim-editorconfig vim-pathogen vim-puppet vim-rails vim-tabular -y
+apt install libcanberra-gtk-module libcanberra-gtk3-module -y
 apt install vlc libdvdcss2 vlc-plugin-fluidsynth vlc-plugin-jack vlc-plugin-svg -y
 dpkg-reconfigure libdvd-pkg
 ```
