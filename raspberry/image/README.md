@@ -11,7 +11,7 @@ Kernel version: 5.15
 Size: 816MB
 ```
 
-Aggiornamento di 118 pacchetti al primo login (in una ventina di minuti).
+Aggiornamento di 41 pacchetti al primo login.
 
 È utile usare l'imager perchè si imposta: hostname, ssh, user/password, locale (time e keyboard).
 
