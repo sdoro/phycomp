@@ -56,7 +56,12 @@ Device 30:E2:83:05:1E:1D LEGO Hub@PROF
 [bluetooth]#
 ```
 
-Exit out of bluetoothctl and use rfcomm to create a /dev/rfcomm0 device (serial):
+Exit out of bluetoothctl:
+```
+[bluetooth]# quit
+```
+
+Use rfcomm to create a /dev/rfcomm0 device (serial):
 
 ```
 $ sudo rfcomm bind 0 30:E2:83:05:1E:1D
@@ -79,6 +84,11 @@ ctrl-C
 
 To escape the screen (and the shell), you type ctrl + a, and then :quit
 
+You can also transfer file (upload) in Spike and run it with the following command:
+
+```
+ampy --port /dev/rfcomm0 run test.py
+```
 
 When you are done using the Spike, my suggestion would be to release the port:
 
