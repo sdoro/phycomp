@@ -121,3 +121,13 @@ MicroPython 39860aad-dirty on 2021-01-06; ESP32 module with ESP32
 Type "help()" for more information.
 ```
 
+Per conoscere la versione firmware (per firefly_firmware_25_01_004-ht1.bin invece vale 25.01.004):
+
+```
+>>> import makeblock
+makeblock.get_firmware_version()
+'25.01.009'
+```
+
+L'ultimo firmware, ossia il 25.01.009, si riesce a caricare da Windows e tramite il programma mblock.
+
