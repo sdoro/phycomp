@@ -1,0 +1,9 @@
+
+https://micropython.org/download/M5STACK_ATOM/
+
+https://micropython.org/resources/firmware/M5STACK_ATOM-20230426-v1.20.0.bin
+
+import os
+os.uname()
+(sysname='esp32', nodename='esp32', release='1.20.0', version='v1.20.0 on 2023-04-26', machine='M5Stack ATOM with ESP32-PICO-D4')
+
