@@ -1,0 +1,8 @@
+
+https://github.com/microbit-foundation/micropython-microbit-v2
+
+https://github.com/microbit-foundation/micropython-microbit-v2/releases/tag/v2.1.1
+
+import os
+os.uname()
+(sysname='microbit', nodename='microbit', release='2.1.1', version='micro:bit v2.1.1+8aaa36b on 2022-11-10; MicroPython v1.18 on 2022-11-10', machine='micro:bit with nRF52833')

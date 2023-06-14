@@ -1,0 +1,9 @@
+
+https://micropython.org/download/esp32spiram/
+
+https://micropython.org/resources/firmware/esp32spiram-20230426-v1.20.0.bin
+
+import os
+os.uname()
+(sysname='esp32', nodename='esp32', release='1.20.0', version='v1.20.0 on 2023-04-26', machine='ESP32 module (spiram) with ESP32')
+
