@@ -1,6 +1,9 @@
 
 from machine import Pin, PWM, ADC
 
+def map_range(x, in_min, in_max, out_min, out_max):
+    return (x - in_min) * (out_max - out_min) // (in_max - in_min) + out_min
+
 adc = ADC(Pin(26))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_10BIT)
@@ -20,13 +23,15 @@ try:
         if adcValue > max:
             max = adcValue
             
-        pwm.duty(adcValue)
-        print(adcValue)
+        scaled = map_range(adcValue, 130, 600, 0, 1023)
+        # valori scalati calcolati sulla luce dell'ambiente di test
+        pwm.duty(scaled)
+        print(adcValue, scaled)
         time.sleep_ms(100)
 except:
     pwm.deinit()
     print("Done")
-    print('[', min, ',', max, ']')
+    print(adcValue, '[', min, ',', max, ']')
 
 
 
