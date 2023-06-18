@@ -2,9 +2,12 @@
 from machine import Pin, PWM, ADC
 import time
 
-pwm = PWM(Pin(26,Pin.OUT), 1000)
+def map_range(x, in_min, in_max, out_min, out_max):
+    return (x - in_min) * (out_max - out_min) // (in_max - in_min) + out_min
 
-adc = ADC(Pin(4))
+pwm = PWM(Pin(26,Pin.OUT), 1000)     # led
+
+adc = ADC(Pin(4))                    # fotoresistore
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_10BIT)
 
@@ -18,15 +21,16 @@ try:
             min = adcValue
         if adcValue > max:
             max = adcValue
-            
-        pwm.duty(adcValue)
-        #pwm.duty(int(adcValue/20))
-        print(adcValue)
+          
+        scaled = map_range(adcValue, 120, 370, 0, 1023)
+        # valori scalati calcolati sulla luce dell'ambiente di test
+        pwm.duty(scaled)
+        print(adcValue, scaled)     # debug
         time.sleep_ms(100)
 except:
     pwm.deinit()
     print("Done")
-    print('[', min, ',', max, ']')
+    print(adcValue, '[', min, ',', max, ']')
 
 
 
