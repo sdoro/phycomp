@@ -8,8 +8,7 @@ def do_connect():
     wlan.active(True)
     if not wlan.isconnected():
         print('connecting to network...')
-        #wlan.connect("USER", "PASSWORD")
-        wlan.connect("TISCALI_4299", "7mrgluqqmu")
+        wlan.connect("USER", "PASSWORD")
         while not wlan.isconnected():
             pass
     print('network config:', wlan.ifconfig())
