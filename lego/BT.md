@@ -25,34 +25,34 @@ Discovery started
 Press the Bluetooth button on SPIKE, in bluetoothctl you should see something like:
 
 ```
-[NEW] Device 30:E2:83:05:1E:1D 30:E2:83:05:1E:1D
-[CHG] Device 30:E2:83:05:1E:1D Name: LEGO Hub@PROF
-[CHG] Device 30:E2:83:05:1E:1D Alias: LEGO Hub@PROF
+[NEW] Device 30:E2:83:04:A2:96 30:E2:83:05:1E:1D
+[CHG] Device 30:E2:83:04:A2:96 Name: LEGO Hub@PROF
+[CHG] Device 30:E2:83:04:A2:96 Alias: LEGO Hub@PROF
 ```
 
 
 Now pair with that device:
 
 ```
-[bluetooth]# pair 30:E2:83:05:1E:1D
-Attempting to pair with 30:E2:83:05:1E:1D
-[CHG] Device 30:E2:83:05:1E:1D Connected: yes
-[CHG] Device 30:E2:83:05:1E:1D Modalias: bluetooth:v0397p0001d0001
-[CHG] Device 30:E2:83:05:1E:1D UUIDs: 00000000-deca-fade-deca-deafdecacaff
-[CHG] Device 30:E2:83:05:1E:1D UUIDs: 00001101-0000-1000-8000-00805f9b34fb
-[CHG] Device 30:E2:83:05:1E:1D UUIDs: 00001200-0000-1000-8000-00805f9b34fb
-[CHG] Device 30:E2:83:05:1E:1D ServicesResolved: yes
-[CHG] Device 30:E2:83:05:1E:1D Paired: yes
+[bluetooth]# pair 30:E2:83:04:A2:96
+Attempting to pair with 30:E2:83:04:A2:96
+[CHG] Device 30:E2:83:04:A2:96 Connected: yes
+[CHG] Device 30:E2:83:04:A2:96 Modalias: bluetooth:v0397p0001d0001
+[CHG] Device 30:E2:83:04:A2:96 UUIDs: 00000000-deca-fade-deca-deafdecacaff
+[CHG] Device 30:E2:83:04:A2:96 UUIDs: 00001101-0000-1000-8000-00805f9b34fb
+[CHG] Device 30:E2:83:04:A2:96 UUIDs: 00001200-0000-1000-8000-00805f9b34fb
+[CHG] Device 30:E2:83:04:A2:96 ServicesResolved: yes
+[CHG] Device 30:E2:83:04:A2:96 Paired: yes
 Pairing successful
-[CHG] Device 30:E2:83:05:1E:1D ServicesResolved: no
-[CHG] Device 30:E2:83:05:1E:1D Connected: no
+[CHG] Device 30:E2:83:04:A2:96 ServicesResolved: no
+[CHG] Device 30:E2:83:04:A2:96 Connected: no
 ```
 
 List your paired devices:
 
 ```
 [bluetooth]# paired-devices
-Device 30:E2:83:05:1E:1D LEGO Hub@PROF
+Device 30:E2:83:04:A2:96 LEGO Hub@PROF
 [bluetooth]#
 ```
 
@@ -64,7 +64,7 @@ Exit out of bluetoothctl:
 Use rfcomm to create a /dev/rfcomm0 device (serial):
 
 ```
-$ sudo rfcomm bind 0 30:E2:83:05:1E:1D
+$ sudo rfcomm bind 0 30:E2:83:04:A2:96
 $ ls -l /dev/rfcomm0
 crw-rw---- 1 root dialout 216, 0 May  3 08:15 /dev/rfcomm0
 $
@@ -99,17 +99,17 @@ sudo rfcomm release 0
 Also:
 
 ```
-bluetoothctl remove 30:E2:83:05:1E:1D
-bluetoothctl disconnect 30:E2:83:05:1E:1D
+bluetoothctl remove 30:E2:83:04:A2:96
+bluetoothctl disconnect 30:E2:83:04:A2:96
 ```
 
 Put in a script:
 
 ```
-bluetoothctl -- pair 30:E2:83:05:1E:1D
+bluetoothctl -- pair 30:E2:83:04:A2:96
 sleep 10
-bluetoothctl -- trust 30:E2:83:05:1E:1D
-bluetoothctl -- connect 30:E2:83:05:1E:1D
+bluetoothctl -- trust 30:E2:83:04:A2:96
+bluetoothctl -- connect 30:E2:83:04:A2:96
 sleep 5
 ```
 
