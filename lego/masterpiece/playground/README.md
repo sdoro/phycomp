@@ -5,9 +5,7 @@ In questa directory sono salvati alcuni programmi
 utilizzati con il modello 'playgroud' ossia "Advanced Driving Base"
 costruibile seguendo la lezione [Assembling an Advanced Driving Base](https://education.lego.com/en-us/lessons/prime-competition-ready/assembling-an-advanced-driving-base/).
 
-Nota:
-
-Ho trovato utile caricarei gli slot seguendo questa bozza di schema:
+Nota: ho trovato utile caricare gli slot seguendo questo rozzo schema:
 * slot 0 e 1 rispettivamente motori avanti e motori indietro (mezza rotazione)
 * slot 2 e 3 rispettivamente buldozer up e buldozer down
 * slot 4 e 5 rispettivamente liftArm up e liftArm down
