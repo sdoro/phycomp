@@ -3,8 +3,8 @@ import motor_pair, runloop, sys, math
 
 # Constants for Drive Base 1
 motor_pair.pair(motor_pair.PAIR_1, port.A, port.E)
-WHEEL_CIRCUMFERENCE = 17.5 # cm - please adjust according to your robot wheel
-TRACK = 14.5 # cm - please measure your own robot.
+WHEEL_CIRCUMFERENCE = 27.63 # cm - please adjust according to your robot wheel
+TRACK = 14.6 # cm - please measure your own robot.
 SPIN_CIRCUMFERENCE = TRACK * math.pi
 
 async def spin_turn(robot_degrees, motor_speed):
