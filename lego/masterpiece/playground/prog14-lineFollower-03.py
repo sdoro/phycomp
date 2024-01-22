@@ -12,7 +12,8 @@ async def pid_line_follow_forever(v):
     while (True):
         # Compute the error.
         error = 50 - color_sensor.reflection(port.B)
-        P_fix = error * 0.5
+        myConstant = 4
+        P_fix = error * 0.5 * myConstant
         integral = integral + error
         I_fix = integral * 0.001
         derivative = error - lastError
@@ -24,6 +25,6 @@ async def pid_line_follow_forever(v):
         motor_pair.move(motor_pair.PAIR_1, correction, velocity = v)
 
 async def main():
-    await pid_line_follow_forever(200)
+    await pid_line_follow_forever(100)
 
 runloop.run(main())
