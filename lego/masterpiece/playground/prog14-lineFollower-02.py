@@ -12,10 +12,11 @@ async def line_follow_forever(v):
         error = 50 - color_sensor.reflection(port.B)
         # Compute the correction by multiplying the error
         # by a Constant of Proportionality
-        correction = int(error * 0.5)
+        myConstant = 4
+        correction = int(error * 0.5) * myConstant
         motor_pair.move(motor_pair.PAIR_1, correction, velocity = v)
 
 async def main():
-    await line_follow_forever(200)
+    await line_follow_forever(100)
 
 runloop.run(main())
