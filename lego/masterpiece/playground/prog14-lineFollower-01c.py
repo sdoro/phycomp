@@ -11,15 +11,14 @@ async def line_follow_for_distance_cm(distance_cm):
     # See lesson on More Accurate Turns for explanation.
     motor_degrees = int((distance_cm/WHEEL_CIRCUMFERENCE) * 360)
     print(motor_degrees)
-    # Use motor A for DB1 because it moves clockwise and the degrees count up.
-    motor.reset_relative_position(port.A, 0)
-    while motor.relative_position(port.A) < motor_degrees :
+    # Use motor E for DB1 because it moves clockwise and the degrees count up.
+    motor.reset_relative_position(port.E, 0)
+    while motor.relative_position(port.E) < motor_degrees :
         if (color_sensor.reflection(port.B) < 50): # sensor is on Black. Adjust threshold as needed if this is too high
             motor_pair.move(motor_pair.PAIR_1, 30, velocity = 200) # Turn right
         else: # sensor is on white
             motor_pair.move(motor_pair.PAIR_1, -30, velocity = 200) # Turn left
-        print(motor.relative_position(port.A), end='>')
-        runloop.sleep_ms(1000)
+        print(motor.relative_position(port.E), end='>')
 			
 async def main():
 	await line_follow_for_distance_cm(17.5)   # ONE 
