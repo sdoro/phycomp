@@ -10,7 +10,7 @@ async def pid_line_follow_forever(v):
     integral = 0
     lastError = 0
     while True:
-        if color_sensor.reflection(port.F) < 20:          # sensore DX incrocio?
+        if color_sensor.reflection(port.F) < 30:          # sensore DX incrocio?
             break
         # Compute the error.
         error = 50 - color_sensor.reflection(port.B)      # sensore SX segui linea
@@ -27,8 +27,10 @@ async def pid_line_follow_forever(v):
         motor_pair.move(motor_pair.PAIR_1, correction, velocity = v)
 
     print('fermato!')
+    motor_pair.stop(motor_pair.PAIR_1)
 
 async def main():
     await pid_line_follow_forever(100)
+    sys.exit(0)
 
 runloop.run(main())
