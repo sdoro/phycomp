@@ -25,7 +25,7 @@ async def line_follow_forever(v):
         motor_pair.move(motor_pair.PAIR_1, correction, velocity = v)
 
     motor_pair.stop(motor_pair.PAIR_1)
-    print(motor.relative_position(port.E))                     # print path lenght
+    print(motor.relative_position(port.E) / 360 * WHEEL_CIRCUMFERENCE)     # print track lenght
 
 async def main():
     await line_follow_forever(250)
