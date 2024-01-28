@@ -1,8 +1,11 @@
 from hub import port
 import motor, motor_pair, color_sensor, runloop, sys
 
-# Constants for Drive Base 1
+# The drive motors are in port A (left) and port E (right).
 motor_pair.pair(motor_pair.PAIR_1, port.A, port.E)
+
+# The wheel circumference is 27.63 cm.
+WHEEL_CIRCUMFERENCE = 27.63
 
 # rest position for motor moves clockwise
 motor.reset_relative_position(port.E, 0)
@@ -12,7 +15,7 @@ motor.reset_relative_position(port.E, 0)
 async def line_follow_forever(v):
     while True:
         if color_sensor.reflection(port.F) < 30:              # sensore DX indica incrocio?
-            break
+            break                                             # fermati!
         # Compute the error
         error = 50 - color_sensor.reflection(port.B)          # il sensore SX segue linea
         # Compute the correction by multiplying the error
