@@ -7,13 +7,15 @@ import time
 
 global path
 path = list()
+global stop
+stop = False
 
 async def contaCentimetri(nPort):
-    while True:
+    while not stop:
         e = [motor.relative_position(nPort), time.ticks_ms()]
         print(e)
         path.append(e)
-        runloop.sleep_ms(1_000_000)    # sleep only this coroutine
+        await runloop.sleep_ms(1_000)    # sleep only this coroutine
 
 
 # The drive motors are in port A (left) and port E (right).
@@ -47,8 +49,10 @@ async def line_follow_forever(v):
     print('cammino: ', path)
 
 async def main():
-    runloop.run(contaCentimetri(port.E))
+    runloop.run(contaCentimetri(port.E))                # start coroutine
     await line_follow_forever(225)
+    stop = True
+    await runloop.sleep_ms(1_100)    # sleep to wait other coroutine
     
     sys.exit(0)
 
