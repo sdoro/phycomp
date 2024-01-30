@@ -33,7 +33,7 @@ async def line_follow_forever(v):
     print(round(lt, 2), 'cm')                                # print lenght track
 
 async def main():
-    await line_follow_forever(225)
+    await line_follow_forever(125)
     sys.exit(0)
 
 runloop.run(main())
