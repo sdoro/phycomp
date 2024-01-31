@@ -54,6 +54,7 @@ async def line_follow_forever(v):
     lt = motor.relative_position(port.E) / 360 * WHEEL_CIRCUMFERENCE
     print(round(motor.relative_position(port.E),2), 'gradi')                            # print lenght track
     print(round(lt, 2), 'cm')                            # print lenght track
+    print(time.ticks_ms() - start, 'msec')               # print lenght time
     print('path percorso: ', path)
     print('steering: ', steer)
 
