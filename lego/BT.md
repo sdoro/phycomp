@@ -5,7 +5,7 @@ Enable Bluetooth from terminal:
 
 ```
 bluetoothctl power on
-rfkill unblock bluetooth
+sudo rfkill unblock bluetooth
 ```
 
 
@@ -17,6 +17,8 @@ $ sudo bluetoothctl
 Agent is already registered
 [bluetooth]# default-agent
 Default agent request successful
+[bluetooth]# pairable on
+Changing pairable on succeeded
 [bluetooth]# scan on
 Discovery started
 ```
@@ -30,6 +32,10 @@ Press the Bluetooth button on SPIKE, in bluetoothctl you should see something li
 [CHG] Device 30:E2:83:04:A2:96 Alias: LEGO Hub@PROF
 ```
 
+```
+$ sudo bluetoothctl
+[bluetooth]# scan on
+```
 
 Now pair with that device:
 
