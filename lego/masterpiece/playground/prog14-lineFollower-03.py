@@ -13,18 +13,20 @@ async def pid_line_follow_forever(v):
     integral = 0
     lastError = 0
     while True:
-        if color_sensor.reflection(port.F) < 30:            # sensore DX indica incrocio?
-            break                                           # fermati!
+        if color_sensor.reflection(port.F) < 30:         # sensore DX indica incrocio?
+            break                                        # fermati!
         # Compute the error.
-        error = 50 - color_sensor.reflection(port.B)
-        myConstant = 2.5
-        P_fix = error * 0.5 * myConstant
+        #error = 50 - color_sensor.reflection(port.B)    # il sensore SX (B) segue il lato DX della linea nera
+        error = color_sensor.reflection(port.B) - 50     # il sensore SX (B) segue il lato SX della linea nera
+        myConstant = 2.25
+        P_fix = error * myConstant
         integral = integral + error
-        I_fix = integral * 0.001
+        I_fix = integral * 0.0001
         derivative = error - lastError
         lastError = error
-        D_fix = derivative * 1
+        D_fix = derivative * 2
         #I_fix = D_fix = 0
+        #D_fix = 0
         # clamp the correction from -100 to 100 because SP3 doesn’t seem to do it internally.
         correction = min(100, max(-100, int(P_fix + I_fix + D_fix)))
         # use the correction as the steering
@@ -32,10 +34,10 @@ async def pid_line_follow_forever(v):
 
     motor_pair.stop(motor_pair.PAIR_1)
     lt = round(motor.relative_position(port.E) / 360 * WHEEL_CIRCUMFERENCE, 2)
-    print(lt)                                                                     # print track lenght
+    print(lt)                                                                    # print track lenght
 
 async def main():
-    await pid_line_follow_forever(250)
+    await pid_line_follow_forever(100)
     sys.exit(0)
 
 runloop.run(main())
