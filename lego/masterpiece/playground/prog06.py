@@ -9,7 +9,7 @@ import runloop
 
 # Questa funzione restituisce `True` se il sensore di colore rileva il rosso.
 def red_detected():
-    return color_sensor.color(port.A) == color.RED
+    return color_sensor.color(port.F) == color.RED
 
 # Questa funzione restituisce `True` se si preme il pulsante sinistro.
 def left_pressed():

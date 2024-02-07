@@ -12,33 +12,37 @@ motor_pair.pair(motor_pair.PAIR_1, port.A, port.E)
 # The wheel circumference is 27.63 cm.
 WHEEL_CIRCUMFERENCE = 27.63
 
-# Questa funzione restituisce `True` se si preme il pulsante sinistro.
+leftPressed = False
+
+# This function returns `True` if the left button is pressed.
 def left_pressed():
     return button.pressed(button.LEFT) > 0
 
-# Questa coroutine controlla continuamente se il pulsante sinistro è premuto.
+# This module allows you to react to buttons being pressed on the hub
 async def check_button():
     global leftPressed
-    sound.beep(880, 200, 100)
-
     leftPressed = False
+
+    sound.beep(880, 200, 100)# signal that the coroutine starts
+
     while True:
-        # Attendi fino a quando il pulsante sinistro viene premuto,
+        # Wait for the left button to be pressed
         while not left_pressed():
             await runloop.sleep_ms(1)
-        # Quando lo premi emetti un breve segnale acustico.
+        # If the left button is pressed make a short beep.
         leftPressed = True
         sound.beep(880, 200, 100)
-        # Attendi fino al rilascio del pulsante sinistro.
+        # Wait until the left button is released.
         while left_pressed():
             await runloop.sleep_ms(1)
         leftPressed = False
 
-leftPressed = False
 
 # Follow the right side of black line (Black-White edge).
 # To follow a White-Black edge, change the error condition to (reflection - 50)
 async def line_follow_forever(v):
+
+    global leftPressed
 
     # reset position for right motor that moves clockwise
     motor.reset_relative_position(port.E, 0)
@@ -46,7 +50,6 @@ async def line_follow_forever(v):
     start = time.ticks_ms()
     path = [[0, 0]]
 
-    global leftPressed
 
     while True:
         rp = motor.relative_position(port.E)
@@ -62,7 +65,7 @@ async def line_follow_forever(v):
         #        print('trovato arresto: ', rp)
         #        break                                        # fermati!
         # Compute the error: please attention to inversion!
-        #error = 50 - color_sensor.reflection(port.B)       # il sensore SX (B) segue il lato DX della linea nera
+        #error = 50 - color_sensor.reflection(port.B)    # il sensore SX (B) segue il lato DX della linea nera
         error = color_sensor.reflection(port.B) - 50        # il sensore SX (B) segue il lato SX della linea nera
 
         # Compute the correction by multiplying the error
@@ -74,11 +77,13 @@ async def line_follow_forever(v):
         correction = min(100, max(-100, correction))
         motor_pair.move(motor_pair.PAIR_1, correction, velocity = v)
         if leftPressed:
-            print('pigiato left')
+            print('rilevato button left', time.ticks_ms())
             rp = motor.relative_position(port.E)
             t = time.ticks_ms() - start
             if (rp - path[-1][0]) > 25:    # troppo vicini? non registro
                 path.append([rp, t])
+
+        await runloop.sleep_ms(1)
 
     motor_pair.stop(motor_pair.PAIR_1)
 
@@ -89,8 +94,7 @@ async def line_follow_forever(v):
     print('path percorso: ', path)
 
 async def main():
-    leftPressed = False
     await line_follow_forever(125)
     sys.exit(0)
 
-runloop.run(check_button(),main())
+runloop.run(main(),check_button())
