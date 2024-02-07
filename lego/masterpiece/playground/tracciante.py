@@ -52,18 +52,16 @@ async def line_follow_forever(v):
 
 
     while True:
+        # change velocity depending to previous run and where left button was prossed
         rp = motor.relative_position(port.E)
-        #cond = (rp < 1250) or (rp > 1450)
-        if color_sensor.reflection(port.F) < 30:
+        if rp < 370:
+            vv = int(v*1.5)
+        elif rp < 1227:
+            vv = int(v/1.5)
+        else:
+            vv = int(v/2.0)
+        if color_sensor.reflection(port.F) < 30:                  # sensore DX indica incrocio
             break
-        #if color_sensor.reflection(port.F) < 30 and cond:        # sensore DX indica incrocio?
-        #    break
-        #    rp = motor.relative_position(port.E)
-        #    break
-        #    if (rp < 1250) or (rp > 1450):
-        #        motor_pair.stop(motor_pair.PAIR_1)
-        #        print('trovato arresto: ', rp)
-        #        break                                        # fermati!
         # Compute the error: please attention to inversion!
         #error = 50 - color_sensor.reflection(port.B)    # il sensore SX (B) segue il lato DX della linea nera
         error = color_sensor.reflection(port.B) - 50        # il sensore SX (B) segue il lato SX della linea nera
@@ -75,26 +73,32 @@ async def line_follow_forever(v):
         correction = int(error * p)
         # clamp the correction from -100 to 100 because SP3 doesn’t seem to do it internally.
         correction = min(100, max(-100, correction))
-        motor_pair.move(motor_pair.PAIR_1, correction, velocity = v)
+        motor_pair.move(motor_pair.PAIR_1, correction, velocity = vv)
         if leftPressed:
-            print('rilevato button left', time.ticks_ms())
             rp = motor.relative_position(port.E)
             t = time.ticks_ms() - start
             if (rp - path[-1][0]) > 25:    # troppo vicini? non registro
                 path.append([rp, t])
 
-        await runloop.sleep_ms(1)
+        await runloop.sleep_ms(1)          # allow the other coroutine to run
 
     motor_pair.stop(motor_pair.PAIR_1)
 
     lt = motor.relative_position(port.E) / 360 * WHEEL_CIRCUMFERENCE
     print(round(motor.relative_position(port.E),2), 'gradi')                            # print lenght track
-    print(round(lt, 2), 'cm')                            # print lenght track
+    print(round(lt, 2), 'cm')                         # print lenght track
     print(time.ticks_ms() - start, 'msec')            # print lenght time
-    print('path percorso: ', path)
+    print('path percorso: ', path)                    # path marked by pressed left button
 
 async def main():
     await line_follow_forever(125)
     sys.exit(0)
 
 runloop.run(main(),check_button())
+
+'''
+1350 gradi
+103.61 cm
+17181 msec
+path percorso:[[0, 0], [391, 2321], [1108, 11994]]
+'''
