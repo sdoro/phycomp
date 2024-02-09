@@ -1,5 +1,5 @@
 
-# test su 3 tiles (Terminatore, Curva, Terminatore): T+C+T
+# test su 6 tiles (Terminatore, Retta, Spigolo, Dosso, Curva, Terminatore)
 
 from hub import port, button, sound
 import motor, motor_pair, color_sensor, runloop, sys
