@@ -13,7 +13,7 @@ docker run -it \
 	--volume="$XAUTH:$XAUTH" \
 	--net=host \
 	--privileged \
-	tb3_humble \
+	sdoro/tb3_humble \
 	bash
 
 echo "Done."
