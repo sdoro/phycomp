@@ -1,7 +1,7 @@
 #FROM osrf/ros:noetic-desktop-full
 FROM ros:noetic-ros-base-focal
 
-RUN apt update && \
+RUN apt update --allow-insecure-repositories && \
     apt upgrade -y
 
 RUN apt install -y vim exuberant-ctags vim-doc vim-scripts
