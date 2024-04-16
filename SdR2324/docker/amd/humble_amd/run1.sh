@@ -13,7 +13,7 @@ docker run -it \
 	--volume="$XAUTH:$XAUTH" \
 	--net=host \
 	--privileged \
-	humble_amd \
+	sdoro/humble_amd \
 	bash
 
 echo "Done."
