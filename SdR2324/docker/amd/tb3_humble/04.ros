@@ -1,0 +1,5 @@
+# A simple collision avoidance
+
+source /ros_entrypoint.sh
+export TURTLEBOT3_MODEL=waffle_pi
+ros2 run turtlebot3_gazebo turtlebot3_drive

@@ -1,0 +1,5 @@
+#  How to visualize Simulation data(RViz2)
+
+source /ros_entrypoint.sh
+export TURTLEBOT3_MODEL=waffle_pi
+ros2 launch turtlebot3_bringup rviz2.launch.py
