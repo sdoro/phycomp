@@ -12,6 +12,7 @@ RUN apt clean
 
 RUN apt install -y ros-noetic-universal-robots
 RUN apt install -y ros-noetic-turtlebot3\*
+RUN apt install ros-noetic-slam-gmapping
 RUN apt remove -y ros\*dbgsym
 RUN apt clean
 
