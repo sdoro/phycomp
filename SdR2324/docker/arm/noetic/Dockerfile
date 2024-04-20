@@ -1,22 +1,18 @@
-#FROM osrf/ros:noetic-desktop-full
-FROM ros:noetic-ros-base-focal
+#FROM ros:noetic-ros-base-focal
+# https://community.gazebosim.org/t/up-to-date-docker-images-for-gazebo-ros-using-the-osrf-repo/2717
+FROM ghcr.io/sloretz/ros:noetic-simulators-osrf
 
-RUN apt update --allow-insecure-repositories && \
+RUN apt update && \
     apt upgrade -y
+# install turtlebot3 examples
+RUN apt install -y  ros-noetic-turtlebot3 && \
+    apt install -y  ros-noetic-turtlebot3-gazebo && \
+    apt install -y  ros-noetic-turtlebot3-simulations && \
+    apt install -y  ros-noetic-slam-gmapping && \
+    apt clean
 
-RUN apt install -y vim exuberant-ctags vim-doc vim-scripts
-RUN apt install -y colordiff bleachbit cream tmux vim-addon-manager vim-editorconfig vim-pathogen vim-puppet vim-rails vim-tabular
-RUN apt install -y mc arj catdvi dbview epub-utils imagemagick lynx unar
-RUN apt install -y git gitg gitk
-RUN apt clean
+COPY ros_entrypoint.sh /
 
-RUN apt install -y ros-noetic-universal-robots
-RUN apt install -y ros-noetic-turtlebot3\*
-RUN apt install -y ros-noetic-slam-gmapping
-RUN apt remove -y ros\*dbgsym
-RUN apt clean
-
-RUN echo "export TURTLEBOT3_MODEL=burger" >> .bashrc
-
-RUN echo "ALL DONE !"
+ENTRYPOINT ["/ros_entrypoint.sh"]
+CMD ["bash"]
 
