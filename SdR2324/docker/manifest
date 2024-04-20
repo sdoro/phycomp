@@ -1,0 +1,3 @@
+docker manifest create sdoro/humble_sdr:latest \
+sdoro/humble_sdr_arm:latest \
+sdoro/humble_sdr_amd:latest

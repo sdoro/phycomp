@@ -1,0 +1,1 @@
+docker manifest push sdoro/humble_sdr:latest
