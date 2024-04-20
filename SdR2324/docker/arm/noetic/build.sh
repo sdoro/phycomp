@@ -1,1 +1,1 @@
-docker build . -t humble_sdr_arm
+docker build . -t noetic_sdr_arm

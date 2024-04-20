@@ -13,7 +13,7 @@ docker run -it \
 	--volume="$XAUTH:$XAUTH" \
 	--net=host \
 	--privileged \
-	humble_arm \
+	humble_sdr_arm \
 	bash
 
 echo "Done."
