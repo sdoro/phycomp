@@ -1,1 +1,1 @@
-docker build . --force-rm -t noetic_sdr
+docker build . --force-rm -t noetic_sdr_amd
