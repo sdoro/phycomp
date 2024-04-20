@@ -4,8 +4,16 @@ FROM ghcr.io/sloretz/ros:humble-desktop-full
 
 RUN apt update && \
     apt upgrade -y
+
+# install missing (for arm) gazebo package
+RUN apt-get install software-properties-common -y && \
+    add-apt-repository ppa:openrobotics/gazebo11-non-amd64 && \
+    apt update && \
+    apt-get install gazebo -y
+
 # install turtlebot3 examples
-RUN apt install -y  ros-humble-turtlebot3 && \
+RUN apt install -y  ros-humble-gazebo-* && \
+    apt install -y  ros-humble-turtlebot3 && \
     apt clean
 
 #    apt install -y  ros-noetic-slam-gmapping && \
