@@ -10,6 +10,7 @@ RUN apt install -y  ros-humble-turtlebot3 && \
     apt install -y  ros-humble-turtlebot3-gazebo && \
     apt install -y  ros-humble-turtlebot3-simulations && \
     apt clean
+RUN apt install -y software-properties-common ros-dev-tools nano
 
 #apt install -y  ros-humble-slam-gmapping && \
 
