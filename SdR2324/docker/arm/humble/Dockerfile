@@ -16,7 +16,7 @@ RUN apt install -y  ros-humble-gazebo-* && \
     apt install -y  ros-humble-turtlebot3 && \
     apt clean
 # install missing editors
-RUN apt install nano vim exuberant-ctags vim-scripts tmux vim-addon-manager vim-editorconfig vim-pathogen mc arj  lynx unar zip
+RUN apt install -y nano vim exuberant-ctags vim-scripts tmux vim-addon-manager vim-editorconfig vim-pathogen mc arj  lynx unar zip
 
 #    apt install -y  ros-noetic-slam-gmapping && \
 #    apt install -y  ros-humble-turtlebot3-gazebo && \
