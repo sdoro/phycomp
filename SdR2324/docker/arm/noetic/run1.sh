@@ -3,7 +3,7 @@ xhost local:root
 
 XAUTH=/tmp/.docker.xauth
 
-docker run -it \
+docker run -it --rm \
 	--name=linux_gui_r1 \
 	--env="DISPLAY=$DISPLAY" \
 	--env="QT_X11_NO_MITSHM=1" \
@@ -12,7 +12,7 @@ docker run -it \
 	--volume="$XAUTH:$XAUTH" \
 	--net=host \
 	--privileged \
-	osrf/ros:noetic-desktop-full \
+	sdoro/noetic_sdr_arm \
 	bash
 
 echo "Done."
