@@ -2,5 +2,4 @@
 
 source /ros_entrypoint.sh
 export TURTLEBOT3_MODEL=waffle_pi
-export ROS_DOMAIN_ID=5
 ros2 launch turtlebot3_bringup rviz2.launch.py
