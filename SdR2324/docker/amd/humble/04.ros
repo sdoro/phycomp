@@ -2,6 +2,7 @@
 
 source /ros_entrypoint.sh
 export TURTLEBOT3_MODEL=waffle_pi
+export ROS_DOMAIN_ID=5
 # fix
 source /usr/share/gazebo/setup.sh
 ros2 run turtlebot3_gazebo turtlebot3_drive
