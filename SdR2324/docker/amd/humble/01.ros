@@ -1,14 +1,10 @@
 # launch Gazebo
 
 export TURTLEBOT3_MODEL=waffle_pi
-# fix
-. /usr/share/gazebo/setup.sh
+# fix gazebo startup
+source /usr/share/gazebo/setup.sh
 
 ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
-
-# la seconda volta, dopo che ha costruito la mappa, funziona
-# meglio ancora: aspetta (la prima volta) ma manca il robot
-# e quindi stop and go una seconda volta.
 
 # If TurtleBot3 House is launched for the first time,
 # downloading the map may take more than a few minutes depending the network status.
