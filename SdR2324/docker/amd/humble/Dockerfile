@@ -1,6 +1,5 @@
-# This is an Dockerfile for ros:humble-ros-base-jammy
-#FROM ros:humble-ros-base-jammy
-FROM ghcr.io/sloretz/ros:humble-desktop-full:latest
+# This is an Dockerfile for ros:humble-desktop-full
+FROM ghcr.io/sloretz/ros:humble-desktop-full
 
 # update e upgrade
 RUN apt update && \
