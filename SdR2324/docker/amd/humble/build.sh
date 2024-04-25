@@ -1,1 +1,1 @@
-docker build . --force-rm -t humble_sdr_amd
+docker build --force-rm -t humble_sdr_amd:latest .

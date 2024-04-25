@@ -4,7 +4,7 @@ xhost local:root
 XAUTH=/tmp/.docker.xauth
 
 docker run -it \
-	--name=t3h \
+	--name=SdR \
 	--rm \
 	--env="DISPLAY=$DISPLAY" \
 	--env="QT_X11_NO_MITSHM=1" \
@@ -13,7 +13,7 @@ docker run -it \
 	--volume="$XAUTH:$XAUTH" \
 	--net=host \
 	--privileged \
-	sdoro/humble_sdr_amd \
+	sdoro/humble_sdr_amd:latest \
 	bash
 
 echo "Done."

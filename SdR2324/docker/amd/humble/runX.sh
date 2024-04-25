@@ -8,7 +8,7 @@ docker exec -it \
 	--env="QT_X11_NO_MITSHM=1" \
 	--env="XAUTHORITY=$XAUTH" \
 	--privileged \
-	t3h \
+	SdR \
 	bash
 
 echo "Done."
