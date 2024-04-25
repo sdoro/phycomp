@@ -1,6 +1,7 @@
 # launch Gazebo
 
 export TURTLEBOT3_MODEL=waffle_pi
+export ROS_DOMAIN_ID=5
 # fix gazebo startup
 source /usr/share/gazebo/setup.sh
 
