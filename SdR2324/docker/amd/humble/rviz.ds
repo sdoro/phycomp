@@ -1,0 +1,13 @@
+;; devilspie configuration file
+
+(begin
+
+;;(debug)
+
+(if (contains (window_name) "RViz") and not (contains (window_name) "cartographer")
+  (begin
+      (unmaximize)
+      (geometry "829x784+230+160")
+    )
+  )
+)

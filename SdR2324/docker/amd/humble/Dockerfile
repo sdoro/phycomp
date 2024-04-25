@@ -1,6 +1,6 @@
 # This is an Dockerfile for ros:humble-ros-base-jammy
 #FROM ros:humble-ros-base-jammy
-FROM ghcr.io/sloretz/ros:humble-desktop-full
+FROM ghcr.io/sloretz/ros:humble-desktop-full:latest
 
 # update e upgrade
 RUN apt update && \
@@ -12,9 +12,13 @@ RUN apt install -y  ros-humble-turtlebot3 && \
     apt clean
 RUN apt install -y software-properties-common ros-dev-tools
 # install editors
-RUN apt install -y vim exuberant-ctags vim-scripts tmux vim-addon-manager vim-editorconfig vim-pathogen mc arj  lynx unar zip
+RUN apt install -y nano vim exuberant-ctags vim-scripts tmux vim-addon-manager vim-editorconfig vim-pathogen mc arj  lynx unar zip
 
-#apt install -y  ros-humble-slam-gmapping && \
+#apt install -y  ros-humble-slam-gmapping && \ abbandonato in ROS2
+
+## Download and build our Robot and Simulation application
+#RUN sh -c 'mkdir -p /root/SdR/workspace'
+#RUN sh -c 'cd /root/SdR/workspace && wget https://github.com/sdoro/phycomp/archive/refs/heads/main.zip && unzip main.zip'
 
 COPY ros_entrypoint.sh /
 

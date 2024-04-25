@@ -1,0 +1,13 @@
+;; devilspie configuration file
+
+(begin
+
+;;(debug)
+
+(if (contains (window_name) "cartographer")
+  (begin
+      (unmaximize)
+      (geometry "1096x729+667+359")
+    )
+  )
+)
