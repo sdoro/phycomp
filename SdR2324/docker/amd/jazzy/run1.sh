@@ -13,7 +13,7 @@ docker run -it \
         --volume="$XAUTH:$XAUTH" \
         --net=host \
         --privileged \
-	-v .:/mnt/share \
+	--volume .:/mnt/share \
         osrf/ros:jazzy-desktop \
         bash
 

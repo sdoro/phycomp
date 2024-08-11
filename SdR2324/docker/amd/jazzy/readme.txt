@@ -6,7 +6,7 @@ https://docs.ros.org/en/jazzy/Tutorials/Demos/dummy-robot-demo.html
 
 
 echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
-~/.bashrc
+source ~/.bashrc
 
 YouTube video:
 https://www.youtube.com/watch?v=ECaBsKY9rUM
