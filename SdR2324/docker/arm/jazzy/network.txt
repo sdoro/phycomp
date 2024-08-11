@@ -1,0 +1,7 @@
+apt install iputils-ping
+
+su raspberry:
+
+route add -net 172.18.0.0 netmask 255.255.255.0 gw 192.168.1.110
+route add -net 172.17.0.0 netmask 255.255.255.0 gw 192.168.1.110
+
