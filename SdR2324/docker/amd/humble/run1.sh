@@ -14,6 +14,7 @@ docker run -it \
 	--volume="$XAUTH:$XAUTH" \
 	--net=host \
 	--privileged \
+	--volume .:/mnt/share \
 	sdoro/humble_sdr_amd:latest \
 	bash
 

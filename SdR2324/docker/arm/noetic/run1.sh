@@ -12,6 +12,7 @@ docker run -it --rm \
 	--volume="$XAUTH:$XAUTH" \
 	--net=host \
 	--privileged \
+	--volume .:/mnt/share \
 	sdoro/noetic_sdr_arm \
 	bash
 

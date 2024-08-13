@@ -13,6 +13,7 @@ docker run -it \
 	--volume="$XAUTH:$XAUTH" \
 	--net=host \
 	--privileged \
+	--volume .:/mnt/share \
 	sdoro/tb3_humble \
 	bash
 
