@@ -1,6 +1,9 @@
+
+Può essere utile a volte installare il comando ping:
+
 apt install iputils-ping
 
-su raspberry:
+Può servire, spero di no, definite delle route:
 
 route add -net 172.18.0.0 netmask 255.255.255.0 gw 192.168.1.110
 route add -net 172.17.0.0 netmask 255.255.255.0 gw 192.168.1.110

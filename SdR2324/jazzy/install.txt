@@ -1,24 +1,14 @@
-Running ROS 2 nodes in Docker [community-contributed]
-https://docs.ros.org/en/jazzy/How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html
 
-Experimenting with a dummy robot
-https://docs.ros.org/en/jazzy/Tutorials/Demos/dummy-robot-demo.html
-
-
-echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-
-YouTube video:
-https://www.youtube.com/watch?v=ECaBsKY9rUM
-
-Per completare l'installazione:
+Per completare l'installazione base:
 
 wget https://s3.ap-northeast-1.wasabisys.com/download-raw/dpkg/ros2-desktop/debian/bookworm/ros-jazzy-desktop-0.3.2_20240525_arm64.deb
 apt install ./ros-jazzy-desktop-0.3.2_20240525_arm64.deb 
 apt install net-tools
 
+
 # When using Rviz2, switch the display server from Wayland to X11
 apt get install xorg openbox
+
 # poi lanciare raspi-config
 #   selezionare "Advanced Options"
 #     poi selezionare Wayland
@@ -29,7 +19,11 @@ apt install mc arj genisoimage imagemagick unar wimtools
 apt install shotwell
 
 
-costruzione del pacchetto:
+La documentazione che viene seguita è nel file readme.txt che usa docker e un
+pacchetto  di nome ros-jazzy-dummy-robot-bringup ma che nel nostro caso
+occorre costruire dai sorgenti.
+
+Costruzione del pacchetto:
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
 # This repository contains source code for demos mentioned in the official ROS 2 documentation
