@@ -1,7 +1,0 @@
-
-export ROS_DOMAIN_ID=8
-# echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-
-# ros2 run rviz rviz
-rviz2

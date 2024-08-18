@@ -1,7 +1,0 @@
-
-export ROS_DOMAIN_ID=8
-echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-
-
-ros2 launch dummy_robot_bringup dummy_robot_bringup_launch.py
