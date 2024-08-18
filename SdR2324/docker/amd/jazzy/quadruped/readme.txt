@@ -32,19 +32,28 @@ pip install --break-system-packages onshape-to-robot
 
 # Install Dependencies
 apt install -y software-properties-common
-sudo add-apt-repository ppa:openscad/releases
+add-apt-repository ppa:openscad/releases
 # change noble in focal (DOVREBBE FUNZIONARE ANCHE SENZA)
 vi /etc/apt/sources.list.d/openscad-ubuntu-releases-noble.sources
-sudo apt update
-sudo apt install -y openscad
-sudo apt install -y meshlab
+apt update
+apt install -y openscad
+apt install -y meshlab
+
+
+--- urdf ---
+apt install -y ros-jazzy-urdf ros-jazzy-urdfdom ros-jazzy-urdfdom-headers ros-jazzy-urdfdom-py ros-jazzy-sdformat-urdf ros-jazzy-urdf-parser-plugin ros-jazzy-urdf-tutorial
+--- xacro ---
+apt install -y ros-jazzy-xacro ros-jazzy-webots-ros2-importer ros-jazzy-robotiq-description
+
+
+
 
 # Add the OnShapeKeys to the `keys.sh` file
 source /mnt/share/keys.sh
 
 mkdir -p /home/user
 export HOME=/home/user
-cd
+cd ~
 tar zxf /mnt/share/onshape-to-ros2.tgz
 cd ~/ros2_ws/src
 rm -rf quadruped_description
@@ -53,6 +62,7 @@ cd quadruped_description
 mkdir quadruped
 touch quadruped/config.json
 mkdir launch rviz
+# ------------------domanda su id (privato?)
 cp /mnt/share/config.json quadruped/config.json
 cp /mnt/share/CMakeLists.txt ~/ros2_ws/src/quadruped_description/CMakeLists.txt
 # cd ~/ros2_ws/src/quadruped_description
@@ -69,6 +79,7 @@ cp /mnt/share/start_rviz.launch.py launch/start_rviz.launch.py
 
 cd ~/ros2_ws/
 source install/setup.bash
+# c'è un errore e quindi aggiungo a mano: "source ./install/local_setup.bash"
 colcon build --packages-select quadruped_description
 source install/setup.bash
 
@@ -79,8 +90,7 @@ ros2 launch quadruped_description quadruped.launch.py
 
 
 export HOME=/home/user
-cd
-cd ros2_ws/
+cd ~/ros2_ws/
 source install/setup.bash
 ros2 launch quadruped_description start_rviz.launch.py
 
