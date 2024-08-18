@@ -24,8 +24,7 @@ https://dev-portal.onshape.com/
 
 apt update
 sh /mnt/share/install.sh
-apt install -y vim mc less
-apt install -y pip
+apt install -y vim mc less pip
 # Install onSHape to Urdf python module
 pip install --break-system-packages onshape-to-robot
 
@@ -33,8 +32,6 @@ pip install --break-system-packages onshape-to-robot
 # Install Dependencies
 apt install -y software-properties-common
 add-apt-repository ppa:openscad/releases
-# change noble in focal (DOVREBBE FUNZIONARE ANCHE SENZA)
-vi /etc/apt/sources.list.d/openscad-ubuntu-releases-noble.sources
 apt update
 apt install -y openscad
 apt install -y meshlab
@@ -47,9 +44,6 @@ apt install -y ros-jazzy-xacro ros-jazzy-webots-ros2-importer ros-jazzy-robotiq-
 
 
 
-
-# Add the OnShapeKeys to the `keys.sh` file
-source /mnt/share/keys.sh
 
 mkdir -p /home/user
 export HOME=/home/user
@@ -65,9 +59,11 @@ mkdir launch rviz
 # ------------------domanda su id (privato?)
 cp /mnt/share/config.json quadruped/config.json
 cp /mnt/share/CMakeLists.txt ~/ros2_ws/src/quadruped_description/CMakeLists.txt
+# Add the OnShapeKeys to the `keys.sh` file
+source /mnt/share/keys.sh
 # cd ~/ros2_ws/src/quadruped_description
 onshape-to-robot quadruped
-vi quadruped/robot.urdf    ontop: <?xml version="1.0"?>
+sed -i '1i <?xml version="1.0"?>' quadruped/robot.urdf
 # cd ~/ros2_ws/src/quadruped_description
 touch launch/quadruped.launch.py
 touch launch/start_rviz.launch.py
@@ -91,9 +87,9 @@ ros2 launch quadruped_description quadruped.launch.py
 
 export HOME=/home/user
 cd ~/ros2_ws/
+cp /mnt/share/quadruped.rviz install/quadruped_description/share/quadruped_description/rviz/quadruped.rviz
 source install/setup.bash
 ros2 launch quadruped_description start_rviz.launch.py
-
 
 
 export HOME=/home/user
