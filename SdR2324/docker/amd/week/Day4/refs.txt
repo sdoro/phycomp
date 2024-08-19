@@ -1,0 +1,7 @@
+
+ROS 2 Topics | ROS2 Jazzy Learning Week Day 4 2024
+https://www.youtube.com/watch?v=Yn2nbiPNMkE
+
+ROS2 Learning Week Day 4 | Understanding Topics
+https://app.theconstruct.ai/rosjects/814237/
+
