@@ -2,6 +2,9 @@
 # redefine HOME
 source /mnt/share/first.sh
 
+# install mine packages
+/mnt/share/install.sh
+
 # install packages for day 4
 /mnt/share/course_install.sh
 
@@ -10,6 +13,7 @@ tar zxf /mnt/share/ros2-learning-week-day-4-under--2024-08-03--e98949628832.tgz
 
 
 source ~/sim_ws/install/setup.bash
+# ? source ./sim_ws/install/local_setup.bash
 ros2 launch rosbot_xl_gazebo simulation.launch.py
 
 
@@ -40,6 +44,8 @@ twist:
     y: 0.0
     z: 0.5
 "
+
+ros2 topic info /scan
 # find important information /scan topic
 ros2 interface show sensor_msgs/msg/LaserScan
 
@@ -59,6 +65,7 @@ cp  /mnt/share/setupPub.py setup.py
 cd ~/ros2_ws
 colcon build --packages-select publisher_pkg
 source ~/ros2_ws/install/setup.bash
+ros2 launch publisher_pkg publisher_pkg_launch_file.launch.py
 
 # create a Simple Subscriber Node
 cd ~/ros2_ws/src/
@@ -75,6 +82,30 @@ cp /mnt/share/setupSub.py setup.py
 cd ~/ros2_ws
 colcon build --packages-select subscriber_pkg
 source ~/ros2_ws/install/setup.bash
+ros2 launch subscriber_pkg subscriber_pkg_launch_file.launch.py
+# in another terminal:
+ros2 topic info /scan -v
+
+
+# Write a Publisher & Subscriber Node
+cd ~/ros2_ws/src/
+ros2 pkg create --build-type ament_python exercise21_pkg --dependencies rclpy std_msgs sensor_msgs geometry_msgs
+cp /mnt/share/exercise21.py exercise21_pkg/exercise21_pkg/
+cd ~/ros2_ws/src/exercise21_pkg
+mkdir launch
+cd ~/ros2_ws/src/exercise21_pkg/launch/
+touch exercise21_pkg_launch_file.launch.py
+chmod +x exercise21_pkg_launch_file.launch.py
+cp /mnt/share/exercise21_pkg_launch_file.launch.py .
+cd ..
+cp /mnt/share/setupPubSub.py setup.py
+colcon build --packages-select exercise21_pkg
+source ~/ros2_ws/install/setup.bash
+ros2 launch exercise21_pkg exercise21_pkg_launch_file.launch.py
+
+
+# Use a Custom Interface
+# TBD
 
 
 # bot
