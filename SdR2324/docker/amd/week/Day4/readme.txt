@@ -51,6 +51,7 @@ ros2 interface show sensor_msgs/msg/LaserScan
 
 
 # create a Simple Publisher Node
+--------------------------------
 cd ~/ros2_ws/src/
 ros2 pkg create --build-type ament_python publisher_pkg --dependencies rclpy std_msgs geometry_msgs
 cp /mnt/share/simple_publisher.py publisher_pkg/publisher_pkg/
@@ -67,7 +68,9 @@ colcon build --packages-select publisher_pkg
 source ~/ros2_ws/install/setup.bash
 ros2 launch publisher_pkg publisher_pkg_launch_file.launch.py
 
+
 # create a Simple Subscriber Node
+---------------------------------
 cd ~/ros2_ws/src/
 ros2 pkg create --build-type ament_python subscriber_pkg --dependencies rclpy std_msgs sensor_msgs
 cp /mnt/share/simple_subscriber.py subscriber_pkg/subscriber_pkg/
@@ -88,6 +91,7 @@ ros2 topic info /scan -v
 
 
 # Write a Publisher & Subscriber Node
+-------------------------------------
 cd ~/ros2_ws/src/
 ros2 pkg create --build-type ament_python exercise21_pkg --dependencies rclpy std_msgs sensor_msgs geometry_msgs
 cp /mnt/share/exercise21.py exercise21_pkg/exercise21_pkg/
@@ -104,8 +108,35 @@ source ~/ros2_ws/install/setup.bash
 ros2 launch exercise21_pkg exercise21_pkg_launch_file.launch.py
 
 
-# Use a Custom Interface
-# TBD
+# How to Create a Custom Interface
+----------------------------------
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_cmake custom_interfaces
+cd ~/ros2_ws/src/custom_interfaces
+mkdir msg
+cp /mnt/share/Age.msg msg/
+cp /mnt/share/CMakeLists.txt .
+cp /mnt/share/package.xml .
+cd ~/ros2_ws
+colcon build --packages-select custom_interfaces
+source install/setup.bash
 
+# verify the message has been created:
+ros2 interface show custom_interfaces/msg/Age
+
+
+# Use a Custom Interface
+------------------------
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python example26_pkg --dependencies rclpy std_msgs geometry_msgs custom_interfaces
+cd ~/ros2_ws/src/example26_pkg
+cp /mnt/share/example26.py example26_pkg/
+mkdir launch
+cd launch
+touch example26.launch.py
+chmod +x example26.launch.py
+cp /mnt/share/example26.launch.py example26.launch.py
+cd ..
+cp /mnt/share/setupCusInt.py setup.py
 
 # bot
