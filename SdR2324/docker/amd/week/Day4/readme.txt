@@ -138,5 +138,13 @@ chmod +x example26.launch.py
 cp /mnt/share/example26.launch.py example26.launch.py
 cd ..
 cp /mnt/share/setupCusInt.py setup.py
+cd ~/ros2_ws
+colcon build --packages-select example26_pkg
+source ~/ros2_ws/install/setup.bash
+ros2 launch example26_pkg example26.launch.py
+# in other term
+source ~/ros2_ws/install/setup.bash
+ros2 topic echo /age
+
 
 # bot

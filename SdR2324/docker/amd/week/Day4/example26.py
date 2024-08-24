@@ -5,7 +5,7 @@ from rclpy.qos import ReliabilityPolicy, QoSProfile
 from custom_interfaces.msg import Age
 
 
-class Example36(Node):
+class Example26(Node):
 
     def __init__(self):
         # Here you have the class constructor
@@ -32,10 +32,10 @@ def main(args=None):
     # initialize the ROS communication
     rclpy.init(args=args)
     # declare the node constructor
-    example36 = Example36()
-    rclpy.spin(example36)
+    example26 = Example26()
+    rclpy.spin(example26)
     # Explicity destroy the node
-    example36.destroy_node()
+    example26.destroy_node()
     # shutdown the ROS communication
     rclpy.shutdown()
 
