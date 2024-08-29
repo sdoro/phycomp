@@ -14,7 +14,8 @@ RUN apt install -y vim mc less && \
     apt install -y ros-jazzy-ros2-controllers && \
     apt install -y ros-jazzy-gz-ros2-control && \
     apt install -y ros-jazzy-gz-ros2-control-demos && \
-    apt clean
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
 
 
 COPY ros_entrypoint.sh /
