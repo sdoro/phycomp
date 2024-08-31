@@ -1,3 +1,3 @@
-float32 years
-float32 months
-float32 days
+int32 year
+int32 month
+int32 day

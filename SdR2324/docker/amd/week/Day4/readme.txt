@@ -143,6 +143,7 @@ colcon build --packages-select example26_pkg
 source ~/ros2_ws/install/setup.bash
 ros2 launch example26_pkg example26.launch.py
 # in other term
+source /mnt/share/first.sh
 source ~/ros2_ws/install/setup.bash
 ros2 topic echo /age
 
