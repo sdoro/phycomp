@@ -1,0 +1,3 @@
+docker login -u 'sandro.doro@gmail.com' -p 'kosen-rufu!2324'
+docker image tag jazzy_sdr_arm sdoro/jazzy_sdr_arm:latest
+docker image push sdoro/jazzy_sdr_arm:latest
