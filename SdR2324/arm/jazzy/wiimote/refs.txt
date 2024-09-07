@@ -1,0 +1,16 @@
+
+Setting up the Nintendo Wii Remote Control
+https://automaticaddison.com/how-to-make-a-remote-controlled-robot-using-raspberry-pi/
+
+sudo apt-get install -y libcwiid1 lswm wmgui wminput
+
+lswm 
+Put Wiimotes in discoverable mode now (press 1+2)...
+00:24:44:9B:B1:9A
+
+lswm 
+Put Wiimotes in discoverable mode now (press 1+2)...
+00:24:1E:B0:A5:DF
+
+
+# bot
