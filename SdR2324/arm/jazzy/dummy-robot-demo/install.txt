@@ -1,0 +1,15 @@
+
+
+La documentazione che viene seguita è nel file readme.txt che usa docker e un
+pacchetto  di nome ros-jazzy-dummy-robot-bringup ma che nel nostro caso
+occorre costruire dai sorgenti.
+
+Costruzione del pacchetto:
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+# This repository contains source code for demos mentioned in the official ROS 2 documentation
+git clone -b jazzy https://github.com/ros2/demos
+source /opt/ros/jazzy/setup.bash
+colcon build --packages-up-to dummy_robot_bringup
+source ~/ros2_ws/install/setup.bash
+
