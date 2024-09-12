@@ -17,8 +17,7 @@ class MinimalSubscriber(Node):
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
-        #self.get_logger().info('I heard: "%s"' % msg.data)
-        self.get_logger().info('I heard a Twist')
+        self.get_logger().info('I heard a Twist: LinVel="%f", AngVel="%f"' % (msg.linear.x, msg.angular.z))
 
 
 def main(args=None):
