@@ -2,6 +2,7 @@
 source /mnt/share/first.sh
 /mnt/share/install.sh
 /mnt/share/course_install.sh
+source /opt/ros/jazzy/setup.bash
 
 tar zxf /mnt/share/ros2-learning-week-day-3-basic--2024-08-14--bd651c1ff31b.tgz
 
@@ -11,6 +12,7 @@ ros2 launch rosbot_xl_gazebo simulation.launch.py
 # in a new terminal:
 source /mnt/share/first.sh
 source /opt/ros/jazzy/setup.bash
+source ~/sim_ws/install/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=/rosbot_xl_base_controller/cmd_vel
 
 
