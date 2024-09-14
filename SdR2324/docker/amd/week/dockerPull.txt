@@ -1,3 +1,6 @@
 
+#
+docker login -u 'sandro.doro@gmail.com' -p 'password'
+
 docker pull osrf/ros:jazzy-desktop
 
