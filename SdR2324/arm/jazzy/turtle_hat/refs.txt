@@ -1,3 +1,35 @@
 
 https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html
 
+
+
+da verificare la riutilizzazione:
+
+https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html
+
+poi ho usato:
+https://docs.ros.org/en/eloquent/Tutorials/Topics/Understanding-ROS2-Topics.html#ros2-topic-echo
+
+
+-------
+
+https://ros2-industrial-workshop.readthedocs.io/en/latest/_source/basics/ROS2-Turtlesim.html
+https://github.com/ros-industrial/ros2_i_training/blob/main/workshop/source/_source/basics/ROS2-Turtlesim.md
+
+esempio con joystick:
+https://ros2-industrial-workshop.readthedocs.io/en/latest/_source/navigation/ROS2-Turtlebot.html
+
+
+------
+sulla rotazione:
+http://wiki.ros.org/turtlesim/Tutorials/Rotating%20Left%20and%20Right
+e in generale:
+Practicing Python with Turtlesim
+https://wiki.ros.org/turtlesim/Tutorials#Practicing_Python_with_Turtlesim
+
+
+
+------
+Il codice di turtlesim per jazzy: https://github.com/ros/ros_tutorials/tree/jazzy/turtlesim
+
+

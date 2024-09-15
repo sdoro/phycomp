@@ -1,9 +1,11 @@
+
+from buildhat import Hat
+from buildhat import MotorPair
+
 import rclpy
 from rclpy.node import Node
 
-#from std_msgs.msg import String
 from geometry_msgs.msg import Twist
-
 
 class MinimalSubscriber(Node):
 
@@ -16,9 +18,25 @@ class MinimalSubscriber(Node):
             10)
         self.subscription  # prevent unused variable warning
 
+        self.hat = Hat()
+        self.get_logger().info('Firmware loaded!')
+        self.pair = MotorPair('A', 'B')
+
     def listener_callback(self, msg):
         self.get_logger().info('I heard a Twist: LinVel="%f", AngVel="%f"' % (msg.linear.x, msg.angular.z))
+        lx = msg.linear.x
+        az = msg.angular.z
+        if lx > 0.1:
+            self.pair.run_for_rotations(0.25, speedl=-5, speedr=5)
+        elif lx < -0.1:
+            self.pair.run_for_rotations(0.25, speedl=5, speedr=-5)
 
+        if az > 0.1:
+            self.pair.run_for_rotations(0.25, speedl=5, speedr=5)
+        elif az < -0.1:
+            self.pair.run_for_rotations(0.25, speedl=-5, speedr=-5)
+
+        self.pair.stop()
 
 def main(args=None):
     rclpy.init(args=args)
