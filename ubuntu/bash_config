@@ -1,0 +1,25 @@
+# Set a larger history size
+export HISTSIZE=50000
+export HISTFILESIZE=10000
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Ignore some commands
+export HISTIGNORE="&:[bf]g:exit:mc:bg:fg:history"
+
+
+# change prompt to display current git repository status
+#
+# First, load up the git-prompt.sh file that ships with Git
+test -f /usr/lib/git-core/git-sh-prompt && source /usr/lib/git-core/git-sh-prompt
+# Then, set the options as desired. Remember that the current
+# branch name is displayed no matter what.
+export GIT_PS1_SHOWSTASHSTATE=true
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWUPSTREAM="auto"
+# Finally, add $(__git_ps1) to the prompt variable. That's it!
+export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$(__git_ps1) \$ "
+
+# BOT
