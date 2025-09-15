@@ -1,3 +1,8 @@
 
 [Coroutine Concurrency in Python 3 with asyncio - Robert Smallshire](https://www.youtube.com/watch?v=c5wodlqGK-M)
 
+anche
+
+[Get to grips with asyncio in Python 3 - Robert Smallshire](https://www.youtube.com/watch?v=M-UcUs7IMIM)
+
+
