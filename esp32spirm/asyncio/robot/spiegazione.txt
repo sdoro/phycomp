@@ -1,0 +1,32 @@
+Il metodo "fai-e-guarda" sia molto più veloce del metodo "stop-and-go" per il nostro robot.
+
+---
+
+### Il problema 🤖
+
+Immagina un robot che deve camminare su un percorso per trovare una linea nera. Il suo lavoro è fare due cose:
+1. **Muoversi.**
+2. **Usare un sensore** per controllare se ha trovato la linea.
+
+---
+
+### La soluzione lenta 🐢: "Stop-and-go"
+
+Questo metodo è come se il robot avesse una sola "mente" che può fare una cosa alla volta.
+* Il robot fa un piccolo passo.
+* Poi **si ferma** e usa la sua "mente" per guardare la linea.
+* Se non la trova, ricomincia: fa un altro passo e **si ferma di nuovo**.
+
+Questo è un modo molto **lento** perché il robot spreca tempo prezioso rimanendo fermo e in attesa.
+
+---
+
+### La soluzione veloce 🚀: "Fai-e-guarda"
+
+Questo metodo è come se il robot avesse due "menti" che lavorano insieme.
+* **Mente 1:** Dice al robot di **muoversi continuamente** senza fermarsi.
+* **Mente 2:** Dice al sensore di **cercare continuamente** la linea nera, senza aspettare che il robot si fermi.
+
+Il robot si muove e cerca allo stesso tempo. Non appena il sensore trova la linea, la seconda "mente" invia un segnale per dire alla prima di fermarsi. Il robot si ferma immediatamente e il lavoro è finito molto più velocemente.
+
+**asyncio** in Python funziona proprio come questa soluzione veloce, permettendo al tuo computer di gestire più compiti contemporaneamente per essere più efficiente. 
