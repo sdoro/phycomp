@@ -1,0 +1,44 @@
+
+services:
+  ollama:
+    image: docker.io/ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      # Permette a Ollama di seguire i symlink verso i file reali scaricati da LM Studio
+      - /home/${USER}/.lmstudio:/home/${USER}/.lmstudio
+      # La tua cartella centralizzata dei modelli montata dentro Ollama
+      - /home/${USER}/AllModels:/root/.ollama/models
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    restart: unless-stopped
+    # Questa è la parte fondamentale abilitata dal Toolkit:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n
+    user: "root" # Necessario per i permessi di scrittura sui volumi della Home dell'host
+    ports:
+      - "5678:5678"
+    volumes:
+      - /home/${USER}/.n8n:/home/node/.n8n
+      - /home/${USER}/.lmstudio:/home/${USER}/.lmstudio
+      - /home/${USER}/AllModels:/home/${USER}/AllModels
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - GENERIC_TIMEZONE=Europe/Rome
+      - METRICS_ENABLED=false
+      - HOST_USER=${USER} # Passa il tuo utente a n8n per ricostruire i percorsi dinamici nel nodo Bash
+    depends_on:
+      - ollama
+    restart: unless-stopped
